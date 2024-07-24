@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+# subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
 
 profile:
   align: right
@@ -13,9 +13,9 @@ profile:
   #   <p>123 your address street</p>
   #   <p>Your City, State 12345</p>
 
-news: true  # includes a list of news items
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+# news: true  # includes a list of news items
+# selected_papers: true # includes a list of papers marked as "selected={true}"
+# social: true  # includes social icons at the bottom of the page
 ---
 
 Sorina is a PhD candidate in the Aerospace Department at California Institute of Technology and an affiliate of the Keck Institute of Space Sciences. She has master degrees from Caltech in Space Engineering and from the Swiss Federal Institute of Technology, Lausanne (EPFL) in Robotics and Autonomous Systems and holds a Bachelors of Science in Electronics Engineering from Polytehnic University of Bucharest, Romania.
