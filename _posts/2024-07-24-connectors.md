@@ -31,6 +31,6 @@ For example, one of my MJBots motor driver recently signaled Fault 33, indicatin
 According to the [documentation](https://github.com/mjbots/moteus/blob/main/docs/reference.md), it means: "the most common reason for this is undervoltage, moteus attempted to draw more current than the supply could provide."
 This needs further investigation.
 
-Unfortunately, I have not yet found a reliable and robust method to ensure proper mechanical stress relief for each connector on my biped.
+
 
 
