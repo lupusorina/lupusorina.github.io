@@ -1,8 +1,17 @@
 ---
-layout: cv
-permalink: /cv/
-title: cv
+layout: page
+permalink: /tutorials/
+title: tutorials
 nav: true
 nav_order: 4
-cv_pdf: example_pdf.pdf
 ---
+
+A selection of tutorials in robotics and controls.
+
+**1. Beginner Level**
+
+
+**2. Intermediate Level**
+
+
+**3. Advanced Level**
