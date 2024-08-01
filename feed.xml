@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lupusorina.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lupusorina.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-08-01T22:05:43+00:00</updated><id>https://lupusorina.github.io/feed.xml</id><title type="html">blank</title><subtitle>website
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lupusorina.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lupusorina.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-08-01T22:12:42+00:00</updated><id>https://lupusorina.github.io/feed.xml</id><title type="html">blank</title><subtitle>website
 </subtitle><entry><title type="html">loose connectors</title><link href="https://lupusorina.github.io/blog/2024/connectors/" rel="alternate" type="text/html" title="loose connectors" /><published>2024-07-24T13:39:00+00:00</published><updated>2024-07-24T13:39:00+00:00</updated><id>https://lupusorina.github.io/blog/2024/connectors</id><content type="html" xml:base="https://lupusorina.github.io/blog/2024/connectors/"><![CDATA[<p>One of the main challenges I’ve faced with connectors for my biped’s motors is preventing them from being under excessive tension.
 As the robot moves its legs, significant mechanical stress can be applied to these connectors, and if this stress is not properly managed, the connectors can become loose over time.</p>
 
@@ -42,4 +42,23 @@ Loose connection vs. tight connection for the XT30 connector on the MJBots motor
 This can lead to many problems, including motor drivers breaking.
 For example, one of my MJBots motor driver recently signaled Fault 33, indicating a likely malfunction.
 According to the <a href="https://github.com/mjbots/moteus/blob/main/docs/reference.md">documentation</a>, it means: “the most common reason for this is undervoltage, moteus attempted to draw more current than the supply could provide.”
-This needs further investigation.</p>]]></content><author><name></name></author><category term="sample-posts" /><category term="robotics" /><category term="electrical_engineering" /><summary type="html"><![CDATA[connectors]]></summary></entry></feed>
+MJBots provides really nice tech support on their Discord channels, so according to them: “That indicates damage to the gate driver or fets or both”. I ordered a new motor driver, which just arrived, so I’ll solder it real quick.</p>
+
+<p>Meanwhile, I’ve asked one of my summer students, Cesar, to design a mount to be able to attach the cables more securely.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/2024-07-24/mounts.jpeg" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="mounts" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>]]></content><author><name></name></author><category term="sample-posts" /><category term="robotics" /><category term="electrical_engineering" /><summary type="html"><![CDATA[connectors]]></summary></entry></feed>
