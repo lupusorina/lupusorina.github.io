@@ -24,8 +24,10 @@ For this class, I envisioned and supervised three innovative projects, ensuring 
 
 The class ended in a highly successful presentation at Caltech's Center for Autonomous Systems and Technologies (CAST). The event attracted the attention of many high-profile individuals from Caltech and JPL. During the presentation, students performed successful live demonstrations.
  
-<div class="col-sm-9 mt-3 mt-md-0">
-    {% include figure.html path="assets/img/teaching/me75.png" title="loose connection" class="img-fluid rounded z-depth-1" %}
+<div class="row justify-content-sm-center">
+    <div class="col-sm-9 mt-3 mt-md-0">
+        {% include figure.html path="assets/img/teaching/me75.png" title="loose connection" class="img-fluid rounded z-depth-1" %}
+    </div>
 </div>
 
 --------------

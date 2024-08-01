@@ -29,7 +29,18 @@ One issue arising from unstable power supplies is the potential for voltage drop
 This can lead to many problems, including motor drivers breaking.
 For example, one of my MJBots motor driver recently signaled Fault 33, indicating a likely malfunction.
 According to the [documentation](https://github.com/mjbots/moteus/blob/main/docs/reference.md), it means: "the most common reason for this is undervoltage, moteus attempted to draw more current than the supply could provide."
-This needs further investigation.
+MJBots provides really nice tech support on their Discord channels, so according to them: "That indicates damage to the gate driver or fets or both". I ordered a new motor driver, which just arrived, so I'll solder it real quick.
+
+Meanwhile, I've asked one of my summer students, Cesar, to design a mount to be able to attach the cables more securely.
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
+        {% include figure.html path="assets/img/2024-07-24/mounts.jpeg" title="mounts" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+
+
 
 
 
