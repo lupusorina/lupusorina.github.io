@@ -4,76 +4,162 @@
 @string{aps = {American Physical Society,}}
 
 
-@article{sorina2019adaptive,
-  abbr={AJP},
-  bibtex_show={true},
-  title={Adaptive Nonlinear Control of Fixed-Wing VTOL with Airflow Vector Sensing}, 
-  author={Shi, Xichen and Spieler, Patrick and Tang, Ellande and Lupu, Elena-Sorina and Tokumaru, Phillip and Chung, Soon-Jo},
-  journal={IEEE International Conference on Robotics and Automation (ICRA)}, 
-  year={2020},
+@article{TRO_Sorina,
+  abbr={TRO2024},
+  url = {https://dx.doi.org/10.1088/1748-0221/10/03/C03021},
+  year = {2024_j},
+  publisher = {},
+  volume = {10},
+  number = {03},
+  pages = {C03021},
+  author = {E. S. Lupu* and F. Xie* and J. A. Preiss and J. Alindogan and M. Anderson and S.-J. Chung},
+  title = {MAGIC-VFM: Meta-learning Adaptation for Ground Interaction Control with Visual Foundation Models (under review)},
+  journal = {IEEE Transactions of Robotics, 2014},
+  abstract = {Control of off-road vehicles is challenging due to the complex dynamic interactions with the terrain. Accurate modeling of these interactions is important to optimize driving performance, but the relevant physical phenomena are too complex to model from first principles. Therefore, we present an offline meta-learning algorithm to construct a rapidly-tunable model of residual dynamics and disturbances. Our model processes terrain images into features using a visual foundation model (VFM), then maps these features and the vehicle state to an estimate of the current actuation matrix using a deep neural network (DNN). We then combine this model with composite adaptive control to modify the last layer of the DNN in real time, accounting for the remaining terrain interactions not captured during offline training. We provide mathematical guarantees of stability and robustness for our controller, and demonstrate the effectiveness of our method through simulations and hardware experiments with a tracked vehicle and a car-like robot. We evaluate our method outdoors on different slopes with varying slippage and actuator degradation disturbances, and compare against an adaptive controller that does not use the VFM terrain features. We show significant improvement over the baseline in both hardware experimentation and simulation.},
+  video={https://youtu.be/sxM73ryweRA?si=fraUhvZ-4BCWazdc}
+}
+
+@article{Marin_2015,
+  abbr={IOP2015},
+  url = {https://dx.doi.org/10.1088/1748-0221/10/03/C03021},
+  year = {2015_j},
+  publisher = {},
+  volume = {10},
+  number = {03},
+  pages = {C03021},
+  author = {M. Barros Marin and S. Baron and S.S. Feger and P. Leitao and E.S. Lupu and C. Soos and P. Vichoudis and K. Wyllie},
+  title = {The GBT-FPGA core: features and challenges},
+  journal = {Journal of Instrumentation, 2015},
+  abstract={Initiated in 2009 to emulate the GBTX (Gigabit Transceiver) serial link and test the first GBTX prototypes, the GBT-FPGA project is now a full library, targeting FPGAs (Field Programmable Gate Array) from Altera and Xilinx, allowing the implementation of one or several GBT links of two different types: "Standard" or "Latency-Optimized". The first major version of this IP Core was released in April 2014. This paper presents the various flavours of the GBT-FPGA kit and focuses on the challenge of providing a fixed and deterministic latency system both for clock and data recovery for all FPGA families.
+}
+}
+
+@article{Nakka2018,
+  abbr={AIAA2018},
+  year = {2018_c},
+  author = {Y. Nakka and R. Foust and E.-S. Lupu and D. B. Elliott and I. S. Crowell and S.-J. Chung and F. Y. Hadaegh},
+  video = {https://youtu.be/z5mIcnEnws4?si=PUSACrdWEkzFev2o},
+  title = {Six Degree-of-Freedom Spacecraft Dynamics Simulator for Formation Control Research},
+  journal = {AAS/AIAA Astrodynamics Specialist Conference, 2018},
+  abstract = {This paper presents a new six-degree-of-freedom robotic spacecraft simulator, the Multi-Spacecraft Testbed for Autonomy Research (M-STAR), for testing formation guidance, relative navigation, and control algorithms. The simulator dynamics are governed by five degrees of frictionless translational and rotational air-bearing motion and one degree of kinematic motion in the gravity direction with flightlike actuators, in a 1-g environment. The simulator is modelled as a 3-D pendulum on a floating platform with sixteen thrusters and four reaction wheels as on-board actuators. Based on this plant model, a nonlinear hierarchical control law is proposed for position and attitude trajectory tracking. A weighted generalized pseudo-inverse strategy for control allocation to map control inputs to actuator inputs is discussed. The thruster actuation model for mapping smooth allocated input to non-smooth actuator input that achieves equivalent performance is derived. The control law and allocation scheme are tested on the simulator for real-time position control using the proposed actuator model.}
+}
+
+@article{FoustSorina,
+  abbr={IAC2018},
+  year = {2018_c},
+  publisher = {},
+  author = {R. Foust and E.-S. Lupu and Y. Nakka and D. B. Elliott and I. S. Crowell and S.-J. Chung and F. Y. Hadaegh},
+  title = {Ultra-soft electromagnetic docking with applications to in-orbit assembly},
+  abstract={Docking small satellites in space is a high-risk operation due to the uncertainty in relative position and orientation and the lack of mature docking technologies. This is particularly true for missions that involve multiple docking and undocking procedures like swarm-based construction and reconfiguration. In this paper, an electromagnetic docking system is proposed to mitigate these risks through robust, ultra-soft, propellant-free docking. Designed with reconfigurable self-assembly in mind, the gripping mechanism is androgynous, able to dock at a variety of relative orientations, and tolerant of small misalignments. The mechanical and control design of the system is presented and tested in both simulation and on a fleet of 6 degree-of-freedom (DOF) spacecraft simulators. The spacecraft simulators float on the precision flat floor facility in the Caltech Aerospace Robotics and Control lab, the largest of its kind at any university. The performance of the electromagnetic docking system on-board the simulators is then compared against a propulsive docking system.},
+  journal = {International Astronautical Congress, 2018},
+  video = {https://youtu.be/q2t74AjeQE8?si=1cNBfM3f1MZoxMcs}
+}
+
+
+@article{
+  doi:10.1126/scirobotics.abf8136,
+  abbr={SciRob2021},
+  author = {K. Kim  and P. Spieler and E.-S. Lupu  and A. Ramezani  and S.-J. Chung },
+  title = {A bipedal walking robot that can fly, slackline, and skateboard},
+  journal = {Science Robotics, 2021},
+  volume = {6},
+  number = {59},
+  pages = {eabf8136},
+  year = {2021_j},
+  URL = {https://www.science.org/doi/abs/10.1126/scirobotics.abf8136},
+  eprint = {https://www.science.org/doi/pdf/10.1126/scirobotics.abf8136},
+  video={https://youtu.be/h3bkvVXsVFM?si=CT6Z-s8sbsAvG11n},
+  abstract={Numerous mobile robots in various forms specialize in either ground or aerial locomotion, whereas very few robots can perform complex locomotion tasks beyond simple walking and flying. We present the design and control of a multimodal locomotion robotic platform called LEONARDO, which bridges the gap between two different locomotion regimes of flying and walking using synchronized control of distributed electric thrusters and a pair of multijoint legs. By combining two distinct locomotion mechanisms, LEONARDO achieves complex maneuvers that require delicate balancing, such as walking on a slackline and skateboarding, which are challenging for existing bipedal robots. LEONARDO also demonstrates agile walking motions, interlaced with flying maneuvers to overcome obstacles using synchronized control of propellers and leg joints. The mechanical design and synchronized control strategy achieve a unique multimodal locomotion capability that could potentially enable robotic missions and operations that would be difficult for single-modal locomotion robots.}
+}
+
+@article{MATSUKA20213527,
+  title = {Decentralized formation pose estimation for spacecraft swarms},
+  journal = {Advances in Space Research, 2021},
+  abbr={ASR2021},
+  volume = {67},
+  number = {11},
+  pages = {3527-3545},
+  year = {2021_j},
+  issn = {0273-1177},
+  doi = {https://doi.org/10.1016/j.asr.2020.06.016},
+  url = {https://www.sciencedirect.com/science/article/pii/S027311772030418X},
+  author = {K. Matsuka and A. O. Feldman and E.-S. Lupu and S.-J. Chung and F. Y. Hadaegh},
+  keywords = {Swarm localization, Spacecraft swarm, Large scale estimation, Decentralized estimation},
+  abstract = {For spacecraft swarms, the multi-agent localization algorithm must scale well with the number of spacecraft and adapt to time-varying communication and relative sensing networks. In this paper, we present a decentralized, scalable algorithm for swarm localization, called the Decentralized Pose Estimation (DPE) algorithm. The DPE considers both communication and relative sensing graphs and defines an observable local formation. Each spacecraft jointly localizes its local subset of spacecraft using direct and communicated measurements. Since the algorithm is local, the algorithm complexity does not grow with the number of spacecraft in the swarm. As part of the DPE, we present the Swarm Reference Frame Estimation (SRFE) algorithm, a distributed consensus algorithm to co-estimate a common Local-Vertical, Local-Horizontal (LVLH) frame. The DPE combined with the SRFE provides a scalable, fully-decentralized navigation solution that can be used for swarm control and motion planning. Numerical simulations and experiments using Caltech’s robotic spacecraft simulators are presented to validate the effectiveness and scalability of the DPE algorithm.}
+}
+
+
+@article{FOUST2020191,
+  title = {Autonomous in-orbit satellite assembly from a modular heterogeneous swarm},
+  journal = {Acta Astronautica, 2020},
+  abbr={ActaAstro2020},
+  volume = {169},
+  pages = {191-205},
+  year = {2020_j},
+  issn = {0094-5765},
+  doi = {https://doi.org/10.1016/j.actaastro.2020.01.006},
+  url = {https://www.sciencedirect.com/science/article/pii/S0094576520300060},
+  author = {R. C. Foust and E.-S. Lupu and Y. K. Nakka and S.-J. Chung and F. Y. Hadaegh},
+  keywords = {Self-assembly, Optimal guidance and control, Satellite, Docking, Optimal assignment, Swarm systems},
+  video={https://youtu.be/62cngDR1k-E?si=-Q7_PX15BLvaWIJi},
+  abstract={This paper presents a decentralized, distributed guidance and control scheme to combine a heterogeneous swarm of component satellites into a large satellite structure. The component satellites for the heterogeneous swarm are chosen to promote flexibility in final shape inspired by crystal structures and Islamic tile art. After the ideal fundamental building blocks are selected, basic nanosatellite-class satellite designs are made to assist in simulations involving attitude control. The Swarm Orbital Construction Algorithm (SOCA) is a guidance and control algorithm to allow for the limited type heterogeneity and docking ability required for in-orbit assembly. The algorithm consists of two parts, a distributed auction which uses barrier functions to ensure the proper agent selection for each target, and a trajectory generation portion which leverages model predictive control and sequential convex programming to achieve optimal collision-free trajectories to the desired target point even with nonlinear system dynamics. The optimization constraints use a boundary layer to determine whether the collision avoidance or the docking constraints should be applied. The algorithm was tested in a simulated perturbed 6-DOF spacecraft dynamic environment for planar and out-of-plane final structures and on two robotic platforms, including a swarm of frictionless spacecraft simulation robots.}
+}
+
+
+
+@article{smallsats2024,
+  abbr={SmallSats2024},
+  title={Vision-Based Detection of Uncooperative Targets and Components on Small Satellites}, 
+  author={Grauer*, H. and Lupu*, E.-S. and Lee, C. and Rowen D. and Bycroft B. and Leeds P. and Brader J. and Chung, S.-J.},
+  journal={IEEE International Conference on Robotics and Automation (ICRA), 2020}, 
+  year={2024_c},
   pages={5321-5327},
   dimensions={true},
-  selected={true}
+  selected={false},
+  video={https://youtu.be/2d2Gy-PjgpA?si=KJlFiVIr-qSex3F-},
+  abstract={Fixed-wing vertical take-off and landing (VTOL) aircraft pose a unique control challenge that stems from complex aerodynamic interactions between wings and rotors. Thus, accurate estimation of external forces is indispensable for achieving high performance flight. In this paper, we present a composite adaptive nonlinear tracking controller for a fixed-wing VTOL. The method employs online adaptation of linear force models, and generates accurate estimation for wing and rotor forces in real-time based on information from a three-dimensional airflow sensor. The controller is implemented on a custom-built fixed-wing VTOL, which shows improved velocity tracking and force prediction during the transition stage from hover to forward flight, compared to baseline flight controllers.}
   }
 
 
 
 
-
-@article{PhysRev.47.777,
-  abbr={PhysRev},
-  title={Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author={Einstein, A. and Podolsky, B. and Rosen, N.},
-  abstract={In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal={Phys. Rev.,},
-  volume={47},
-  issue={10},
-  pages={777--780},
-  numpages={0},
-  year={1935},
-  month={May},
-  publisher=aps,
-  doi={10.1103/PhysRev.47.777},
-  url={http://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html={https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf={example_pdf.pdf},
-  altmetric={248277},
+@article{sorina2019adaptive,
+  abbr={ICRA2020},
+  title={Adaptive Nonlinear Control of Fixed-Wing VTOL with Airflow Vector Sensing}, 
+  author={Shi, X. and Spieler, P. and Tang, E. and Lupu, E.-S. and Tokumaru, P. and Chung, S.-J.},
+  journal={IEEE International Conference on Robotics and Automation (ICRA), 2020}, 
+  year={2020_c},
+  pages={5321-5327},
   dimensions={true},
-  selected={true}
+  selected={false},
+  video={https://youtu.be/2d2Gy-PjgpA?si=KJlFiVIr-qSex3F-},
+  abstract={Fixed-wing vertical take-off and landing (VTOL) aircraft pose a unique control challenge that stems from complex aerodynamic interactions between wings and rotors. Thus, accurate estimation of external forces is indispensable for achieving high performance flight. In this paper, we present a composite adaptive nonlinear tracking controller for a fixed-wing VTOL. The method employs online adaptation of linear force models, and generates accurate estimation for wing and rotor forces in real-time based on information from a three-dimensional airflow sensor. The controller is implemented on a custom-built fixed-wing VTOL, which shows improved velocity tracking and force prediction during the transition stage from hover to forward flight, compared to baseline flight controllers.}
+  }
+
+
+@article{iac_sorina,
+  author = {Lupu, E.-S. and Ciuca, I. and Manoliu, L. and Chitu, C. and Cherciu, C. and Ciobanu, I. and Muresan, C. A. and Dragomir, D. and Nachila C. and Soare C.},
+  year = {2013_c},
+  pages = {},
+  abbr={IAC2013},
+  title = {Investigation of the Surface Deformation and Dendritic Solidification of a Titanium Allow melted in Miligravity},
+  journal={International Astronautical Congress (IAC), 2013},
+  video={https://youtu.be/ypFMeuwKNFA?si=TXRkK2qcA4_DFYQc},
+  award={Hans Von Muldau Award for the Best Team Project},
+  abstract={
+With the construction of the International Space Station, microgravity research has enabled many scientific breakthroughs. Moreover, new materials can be synthesized under low gravity conditions. In particular, in our analysis, an investigation on the surface deformation and on the dendritic solidification of a titanium alloy melted under Earth-based laboratory conditions and on board of a sounding rocket is performed. This paper represents the first part of an ample research and is concerned with describing the rocket module platform that will fly during the REXUS 15/16 campaign from Kiruna, Sweden and the results obtained during the on-ground experiment. Also, it includes a detailed research regarding the hypothetical differences that will be obtained during the sub-orbital flight. The experiment contains a multimode LASER diode with an output power of 25 W that will melt samples Ti6Al4V covered with nanotubes. The nanotubular array is elaborated in Polyethylene glycol (PEG600). The research follows to understand the changes in microstructure, especially in the dendritic distribution. The results obtained under Earth conditions are presented in the Results section and then commented on the Discussion section. Here, we propose a comparative analysis with the results obtained under reduced gravity conditions (in the rocket), where we expect a difference in the dendrite geometry, particularly an increased spacing in the dendrites of an alloy that solidify in low gravity. The paper also contains a mathematical model of the heat transfer mechanism that is purely diffusive. The second part of our research is concerned with the experiment on board of the rocket, when, during the 120 seconds of miligravity, the LASER is expected to melt the samples. The environmental parameters are going to be monitored using sensors and the melting process is recorded with a camera. In conclusion, we take into consideration the fact that the only parameter that differs between the on-ground and the on board of the rocket experiment shall be the level of gravity (the pressure, the temperature and the humidity must remain the same). So, a proficient comparison between the low and normal gravity effects can be undertaken.}
 }
 
-@article{einstein1905molekularkinetischen,
-  title={{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author={Einstein, A.},
-  journal={Annalen der physik,},
-  volume={322},
-  number={8},
-  pages={549--560},
-  year={1905},
-  publisher={Wiley Online Library}
-}
 
-@article{einstein1905movement,
-  abbr={Ann. Phys.},
-  title={Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author={Einstein, A.},
-  journal={Ann. Phys.,},
-  volume={17},
-  pages={549--560},
-  year={1905}
-}
 
-@article{einstein1905electrodynamics,
-  title={On the electrodynamics of moving bodies},
-  author={Einstein, A.},
-  year={1905}
-}
-
-@book{przibram1967letters,
-  bibtex_show={true},
-  title={Letters on wave mechanics},
-  author={Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year={1967},
-  publisher={Vision},
-  preview={wave-mechanics.gif}
+@article{workshop_kai_matsuka,
+  author = {Matsuka, K. and Lupu, E. S. and Nakka, Y. and Foust, R. and Chung, S.-J. and Hadaegh, F. Y. Hadaegh},
+  year = {2019_w},
+  abbr={IWSCFF2019},
+  title={Distributed multi-target relative pose estimation for cooperative spacecraft swarm},
+  journal={10th International Workshop on Satellite Constellations and Formation Flying},
+  video={https://youtu.be/ypFMeuwKNFA?si=TXRkK2qcA4_DFYQc},
+  abstract={Multi-agent relative state estimation is critical in enabling full swarm autonomy. However, relative pose estimation of hundreds to thousands of cooperative agents is challenging due to limited sensing, limited communication, and scalability. We present a distributed algorithm for cooperative multi-agent localization with both limited relative sensing and communication. Each agent locally exchanges the relative measurements and jointly estimates the relative poses of its local neighbors. Because the algorithm only estimates the local neighbors, the number of states does not grow with the total number of agents given the same local sensing and communication graphs, making the algorithm suitable for swarm application. The proposed algorithm is applied to spacecraft swarm localization and verified in simulation and experiments. Experiments are conducted on Caltech’s robotic spacecraft simulators, the Multi-Spacecraft Testbed for Autonomy Research (M-STAR), where each spacecraft uses vision-based relative measurements.},
+  award={Best IWSCFF Student Paper Award},
+  video={https://youtu.be/6FsPzoVWE3o?si=Op2SzJiJ09RYVLWB}
 }
