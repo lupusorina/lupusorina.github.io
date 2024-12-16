@@ -24,3 +24,9 @@ Her current research focuses on autonomy, control, and machine learning applied 
 She has won awards and fellowships including the AI4Science Fellowship from Amazon and the Anita Borg Women Techmakers from Google. 
 
 In her spare time, she likes to build robots, travel, and listen to audiobooks.
+
+-------------------
+
+P.S. I use this website to share some of my thoughts, experiences, and knowledge. I hope you find it useful.
+
+-------------------
