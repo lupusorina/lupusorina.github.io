@@ -3,8 +3,7 @@ layout: post
 title:  loose connectors
 date:   2024-07-24 13:39:00
 description: connectors
-tags: robotics electrical_engineering
-categories: sample-posts
+tags: robotics electrical_engineering biped
 ---
 
 

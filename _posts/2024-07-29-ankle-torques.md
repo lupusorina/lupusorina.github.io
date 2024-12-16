@@ -1,10 +1,9 @@
 ---
 layout: post
-title:  Ankle actuators
+title:  ankle actuators
 date:   2024-07-29 13:39:00
 description: How to design ankles that are actuated
-tags: robotics
-categories: sample-posts
+tags: robotics biped
 ---
 
  I initially designed the robot without actuated ankles, planning to add ankle torques once the robot achieved walking.

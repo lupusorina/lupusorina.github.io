@@ -27,6 +27,6 @@ In her spare time, she likes to build robots, travel, and listen to audiobooks.
 
 -------------------
 
-P.S. I use this website to share some of my thoughts, experiences, and knowledge. I hope you find it useful.
+🤖 I use this website to share some of my thoughts, experiences, and knowledge. I hope you find it useful. 🤖
 
 -------------------
