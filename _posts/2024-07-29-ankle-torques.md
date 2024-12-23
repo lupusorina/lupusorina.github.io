@@ -8,7 +8,7 @@ tags: robotics biped
 
  I initially designed the robot without actuated ankles, planning to add ankle torques once the robot achieved walking.
 However, the initial design required the robot to step quickly, making testing by myself extremely challenging.
-Now, it's time to invest in designing the actuated ankles."
+Now, it's time to invest in designing the actuated ankles.
 
 --------------
 
