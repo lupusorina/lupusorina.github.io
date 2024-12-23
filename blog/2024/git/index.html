@@ -10,9 +10,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ankle actuators | Elena Sorina  Lupu</title>
+    <title>partial file staging | Elena Sorina  Lupu</title>
     <meta name="author" content="Elena Sorina  Lupu">
-    <meta name="description" content="How to design ankles that are actuated">
+    <meta name="description" content="partial file staging">
     <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
 
 
@@ -33,7 +33,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://lupusorina.github.io/blog/2024/ankle-torques/">
+    <link rel="canonical" href="https://lupusorina.github.io/blog/2024/git/">
     
     <!-- Dark Mode -->
     
@@ -122,60 +122,47 @@
 <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">ankle actuators</h1>
-    <p class="post-meta">July 29, 2024</p>
+    <h1 class="post-title">partial file staging</h1>
+    <p class="post-meta">July 24, 2024</p>
     <p class="post-tags">
       <a href="/blog/2024"> <i class="fas fa-calendar fa-sm"></i> 2024 </a>
         ·  
-        <a href="/blog/tag/robotics">
-          <i class="fas fa-hashtag fa-sm"></i> robotics</a>  
-          <a href="/blog/tag/biped">
-          <i class="fas fa-hashtag fa-sm"></i> biped</a>  
+        <a href="/blog/tag/best-practices">
+          <i class="fas fa-hashtag fa-sm"></i> best-practices</a>  
           
 
     </p>
   </header>
 
   <article class="post-content">
-    <p>I initially designed the robot without actuated ankles, planning to add ankle torques once the robot achieved walking.
-However, the initial design required the robot to step quickly, making testing by myself extremely challenging.
-Now, it’s time to invest in designing the actuated ankles.</p>
+    <p>Writing good commit messages is very important when developing a large project. It helps you and your team understand the changes you’ve made and why you made them.
+Oftentimes, as PhD students, we tend to work alone and not care that much about the commit messages. However, when you start working with a team, you’ll realize how important it is to write good commit messages and to stage your files properly.
+To me, setting up good practices and good workflows from the beginning is really important.</p>
 
-<hr>
+<p>One command I really like is</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add -p
+</code></pre></div></div>
 
-<h3 id="design">Design</h3>
+<h3 id="what-is-git-add--p">What is <code class="language-plaintext highlighter-rouge">git add -p</code>?</h3>
 
-<p>I consider three options:</p>
+<p>This command initiates an interactive staging session that allows you to selectively stage portions of a file.
+This is particularly useful when you’ve made changes to a file and want to commit only some of those changes.</p>
 
-<ol>
-  <li>
-<strong>motor + low gear ratio (cable-driven)</strong>
-<br> 👍: It is a compact design
-<br> 👎:  Less experience designing this. The cable needs to not stretch over time.</li>
-  <li>
-<strong>motor + low gear ratio (belt-driven)</strong>
-<br> 👍: experience designing belt-driven actuators, as I’ve already designed some for the knee and yaw joints.
-<br> 👎: It might be too bulky/heavy</li>
-  <li>
-<strong>series elastic actuators</strong>
-<br>  👍: Can absorb impacts better
-<br>  👎: Less experience designing this. I need to find a way to measure the spring deflection.</li>
-</ol>
+<h3 id="how-to-use-git-add--p">How to use <code class="language-plaintext highlighter-rouge">git add -p</code>?</h3>
 
-<hr>
+<p>It’s really easy. Just type</p>
 
-<h3 id="controls">Controls</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add -p
+</code></pre></div></div>
+<p>and then git will present you with a series of options.</p>
 
-<p>For the control, I would like to employ a straightforward feedback law. I’m not trying at this point to do something very complicated, because I want to get the robot to walk first.
-So I want something along the lines of 
-\(u = - k_p x_{zmp} - k_d v,\)
- where zmp stands for zero moment point.
- Initially, I was thinking to use the velocity of the zmp. However, I believe that signal will be too noisy.
-So I can use the ankle velocity computed geometrically as the robot moves forward.</p>
-
-<hr>
-
-<p>I decided to go with the series elastic actuators, so I’ll document the sizing, manufacturing, and testing in a separate blog post.</p>
+<p>For example, some that I use a lot are:</p>
+<ul>
+  <li>‘y’ to stage this hunk</li>
+  <li>‘n’ to not stage this hunk</li>
+  <li>’s’ to split this hunk</li>
+  <li>‘q’ to quit; do not stage this hunk or any of the remaining ones</li>
+</ul>
 
 
   </article>
@@ -200,7 +187,7 @@ So I can use the ankle velocity computed geometrically as the robot moves forwar
   
 
   <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2024/git/">partial file staging</a>
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2024/ankle-torques/">ankle actuators</a>
   </li>
 
   

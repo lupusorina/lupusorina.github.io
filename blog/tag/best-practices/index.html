@@ -10,9 +10,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ankle actuators | Elena Sorina  Lupu</title>
+    <title>best-practices | Elena Sorina  Lupu</title>
     <meta name="author" content="Elena Sorina  Lupu">
-    <meta name="description" content="How to design ankles that are actuated">
+    <meta name="description" content="website
+">
     <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
 
 
@@ -33,7 +34,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://lupusorina.github.io/blog/2024/ankle-torques/">
+    <link rel="canonical" href="https://lupusorina.github.io/blog/tag/best-practices/">
     
     <!-- Dark Mode -->
     
@@ -116,98 +117,27 @@
 
     <!-- Content -->
     <div class="container mt-5">
-      <!-- _layouts/post.html -->
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
-<div class="post">
+      <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">ankle actuators</h1>
-    <p class="post-meta">July 29, 2024</p>
-    <p class="post-tags">
-      <a href="/blog/2024"> <i class="fas fa-calendar fa-sm"></i> 2024 </a>
-        ·  
-        <a href="/blog/tag/robotics">
-          <i class="fas fa-hashtag fa-sm"></i> robotics</a>  
-          <a href="/blog/tag/biped">
-          <i class="fas fa-hashtag fa-sm"></i> biped</a>  
-          
-
-    </p>
+    <h1 class="post-title"> <i class="fas fa-hashtag fa-sm"></i> best-practices </h1>
+    <p class="post-description"> an archive of posts with this tag </p>
   </header>
 
-  <article class="post-content">
-    <p>I initially designed the robot without actuated ankles, planning to add ankle torques once the robot achieved walking.
-However, the initial design required the robot to step quickly, making testing by myself extremely challenging.
-Now, it’s time to invest in designing the actuated ankles.</p>
-
-<hr>
-
-<h3 id="design">Design</h3>
-
-<p>I consider three options:</p>
-
-<ol>
-  <li>
-<strong>motor + low gear ratio (cable-driven)</strong>
-<br> 👍: It is a compact design
-<br> 👎:  Less experience designing this. The cable needs to not stretch over time.</li>
-  <li>
-<strong>motor + low gear ratio (belt-driven)</strong>
-<br> 👍: experience designing belt-driven actuators, as I’ve already designed some for the knee and yaw joints.
-<br> 👎: It might be too bulky/heavy</li>
-  <li>
-<strong>series elastic actuators</strong>
-<br>  👍: Can absorb impacts better
-<br>  👎: Less experience designing this. I need to find a way to measure the spring deflection.</li>
-</ol>
-
-<hr>
-
-<h3 id="controls">Controls</h3>
-
-<p>For the control, I would like to employ a straightforward feedback law. I’m not trying at this point to do something very complicated, because I want to get the robot to walk first.
-So I want something along the lines of 
-\(u = - k_p x_{zmp} - k_d v,\)
- where zmp stands for zero moment point.
- Initially, I was thinking to use the velocity of the zmp. However, I believe that signal will be too noisy.
-So I can use the ankle velocity computed geometrically as the robot moves forward.</p>
-
-<hr>
-
-<p>I decided to go with the series elastic actuators, so I’ll document the sizing, manufacturing, and testing in a separate blog post.</p>
-
-
+  <article>
+    <div class="table-responsive">
+      <table class="table table-sm table-borderless">
+        
+        <tr>
+          <th scope="row">Jul 24, 2024</th>
+          <td>
+              <a class="post-link" href="/blog/2024/git/">partial file staging</a>
+          </td>
+        </tr>
+      
+      </table>
+    </div>
   </article>
-
-
-  
-    
-    <br>
-    <hr>
-    <br>
-    <ul class="list-disc pl-8"></ul>
-
-    <!-- Adds related posts to the end of an article -->
-    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
-    <p class="mb-2">Here are some more articles you might like to read next:</p>
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2024/kiss-workshop/">Sample Return from all across the Solar System (KISS workshop)</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2024/git/">partial file staging</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2024/connectors/">loose connectors</a>
-  </li>
 
 </div>
 
