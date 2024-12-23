@@ -253,7 +253,7 @@ jekyll-archives:
     tag: '/blog/tag/:name/'
     category: '/blog/category/:name/'
 
-display_tags: ['robotics', 'biped', 'AI', 'best practices'] # this tags will be displayed on the front page of your blog
+display_tags: ['robotics', 'biped', 'AI', 'best-practices', 'books'] # this tags will be displayed on the front page of your blog
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
