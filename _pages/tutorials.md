@@ -12,6 +12,7 @@ A selection of tutorials in robotics, controls, and learning.
 
 <h3> II. Intermediate Level </h3>
 
+
 1. **Tracking controller for a car with Ackermann Steering**
 
     Solutions: 
