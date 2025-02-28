@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  Book "Lessons from the Lobster"
+title:  Book "Lessons from the Lobster. Eve Marder's Work in Neuroscience"
 date:   2025-01-19 13:39:00
 description: Book "Lessons from the Lobster"
-tags: books
+tags: books AI
 ---
 
 ## Review of the book "Lessons from the Lobster. Eve Marder's Work in Neuroscience"
@@ -20,7 +20,7 @@ What's interesting from the book is that even if there are only a few neurons, b
 I would recommend the book to anyone interested in neuroscience, biology, or even robotics, as it provides a great example of how to study a complex system by focusing on a small part of it. Maybe one day I'll learn more about biology and neuroscience and I'll be able to understand the book in more detail.
 
 
-Off-topic, I am actually allergic to lobsters.
+Off-topic, I am actually allergic to lobsters. 🦞
 
 
 
