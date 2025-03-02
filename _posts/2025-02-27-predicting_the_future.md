@@ -6,13 +6,7 @@ description: Predicting the future with AI
 tags: future_ideas AI
 ---
 
-
-Tomorrow, I will be having a conversation with a researcher working in the field of multi-agent. 
-So I kept thinking, what are some interesting ideas that I could discuss with him?
-I worked on some multi agent research while I was at Caltech,
-but the problems were more related to control theory and robotics.
-
-So in this essay, I'll talk about some multi-agent ideas that fascinate me.
+In this article, I'll talk about some multi-agent ideas that fascinate me.
 I hope you find them interesting as well and maybe one day, someone will pick up on these ideas and make them a reality.
 
 Let's talk about the possibility of predicting the future by modelling the influence of each person's decisions on the world.
