@@ -18,7 +18,8 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 # social: true  # includes social icons at the bottom of the page
 ---
 
-Sorina is a PhD candidate in the Aerospace Department at California Institute of Technology and an affiliate of the Keck Institute of Space Sciences. She has master degrees from Caltech in Space Engineering and from the Swiss Federal Institute of Technology, Lausanne (EPFL) in Robotics and Autonomous Systems and holds a Bachelors of Science in Electronics Engineering from Polytechnic University of Bucharest, Romania.
+Sorina is a Research Fellow at the Openmind Research Institute in Alberta, Canada.
+She has a PhD from California Institute of Technology (awaiting conferral of the degree) and is an affiliate of the Keck Institute of Space Sciences. She has master degrees from Caltech in Space Engineering and from the Swiss Federal Institute of Technology, Lausanne (EPFL) in Robotics and Autonomous Systems and holds a Bachelors of Science in Electronics Engineering from Polytechnic University of Bucharest, Romania.
 She worked previously at CERN (European Organization for Nuclear Research), and at Soundbrenner, in Hong Kong.
 Her current research focuses on autonomy, control, and machine learning applied to robotics and spacecraft. 
 She has won awards and fellowships including the AI4Science Fellowship from Amazon and the Anita Borg Women Techmakers from Google. 
