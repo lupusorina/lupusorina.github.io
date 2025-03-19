@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  Book "Elon Musk" by Walter Isaacson (work in progress)
+title:  Review Book "Elon Musk" by Walter Isaacson (work in progress)
 date:   2024-12-25 13:39:00
-description: Book "Elon Musk" by Walter Isaacson
+description: Review Book "Elon Musk" by Walter Isaacson
 tags: books
 ---
 

@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  Book "Lessons from the Lobster. Eve Marder's Work in Neuroscience"
+title:  Review Book "Lessons from the Lobster. Eve Marder's Work in Neuroscience"
 date:   2025-01-19 13:39:00
-description: Book "Lessons from the Lobster"
+description: Review Book "Lessons from the Lobster"
 tags: books AI
 ---
 
