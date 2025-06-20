@@ -5,5 +5,5 @@ inline: true
 related_posts: false
 ---
 
-We presented our work "Vision-Based Detection of Uncooperative Targets and Components on Small Satellites"
+**August 7th, 2024:** We presented our work "Vision-Based Detection of Uncooperative Targets and Components on Small Satellites"
 at the Small Satellite Conference in Utah. Joint work with The Aerospace Corporation.

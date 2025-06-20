@@ -857,3 +857,19 @@ pre {
     opacity: 1;
   }
 }
+
+
+// News table styling
+.news {
+  .table {
+    th {
+      padding-right: 2rem;
+      min-width: 120px;
+      font-weight: 600;
+    }
+    
+    td {
+      padding-left: 1rem;
+    }
+  }
+}

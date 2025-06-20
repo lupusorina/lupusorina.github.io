@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Was invited to give a talk at the Maryland Robotics Center as part of the Future Leaders in Robotics and AI Series.
+**February 28th, 2025:** Was invited to give a talk at the Maryland Robotics Center as part of the Future Leaders in Robotics and AI Series.

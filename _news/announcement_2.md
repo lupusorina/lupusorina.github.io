@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our work "MAGIC-VFM: Meta-learning Adaptation for Ground Interaction Control with Visual Foundation Models" has been accepted for publication at the 2024 IEEE Transactions on Robotics (T-RO). 🎉
+**September 12th, 2024:** Our work "MAGIC-VFM: Meta-learning Adaptation for Ground Interaction Control with Visual Foundation Models" has been accepted for publication at the 2024 IEEE Transactions on Robotics (T-RO). 🎉
