@@ -1,25 +1,25 @@
 ---
 layout: page
 permalink: /tutorials/
-title: tutorials
+title: tutorials & lecture notes
 nav: true
 nav_order: 4
 ---
 
-A selection of tutorials in robotics, controls, and learning organized by difficulty.
-In general, a Beginner tutorial requires undergraduate-level knowledge in math, an Intermediate tutorial requires a graduate-level understanding and some domain knowledge, and an Advanced tutorial requires a deep understanding of the subject.
+A selection of tutorials and lecture notes in robotics, controls, and learning organized by difficulty.
+In general, a **Beginner** tutorial requires undergraduate-level knowledge in math, an **Intermediate** tutorial requires a graduate-level understanding and some domain knowledge, and an **Advanced** tutorial requires a deep understanding of the subject.
 
-Each tutorial is accessible either as executable code, listed under "Solutions," or through a dedicated link to a page containing detailed tutorial content.
+For tutorials with executable code, click on the "Solutions" link to view the code. 
 
-
-<h3> I. Beginner Level </h3>
+<h3> A. Beginner Level </h3>
 
 1. [**Spectral normalization for a DNN** (work in progress)](/tutorials/spectral_norm/)
 
-2. [**Understanding collisions in MuJoCo** (work in progress)](/tutorials/spectral_norm/)
+<!-- 2. [**Understanding collisions in MuJoCo** (work in progress)](/tutorials/spectral_norm/) -->
 
+3. [**Inertia vs. Scaled Inertia in MuJoCo** (work in progress)](/tutorials/inertia_mujoco/)
 
-<h3> II. Intermediate Level </h3>
+<h3> B. Intermediate Level </h3>
 
 
 1. **Tracking controller for a car with Ackermann steering**
@@ -32,8 +32,7 @@ Each tutorial is accessible either as executable code, listed under "Solutions,"
 
     Solutions: <a href="https://github.com/lupusorina/reward_analysis_ddpg_vs_ppo"> DDPG vs. PPO for different rewards</a>
 
-3. [**H-Infinity Control** (work in progress)](/tutorials/h_infinity/)
+3. [**TD Learning**](/tutorials/td_learning/)
 
-
-<h3> III. Advanced Level </h3>
+<h3> C. Advanced Level </h3>
 
