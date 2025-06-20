@@ -772,6 +772,15 @@ pre:active .copy, pre:focus .copy, pre:hover .copy {
   opacity: 1;
 }
 
+.news .table th {
+  padding-right: 2rem;
+  min-width: 120px;
+  font-weight: 600;
+}
+.news .table td {
+  padding-left: 1rem;
+}
+
 /*******************************************************************************
  * Style overrides for distill blog posts.
  ******************************************************************************/
