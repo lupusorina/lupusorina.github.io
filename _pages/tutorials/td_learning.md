@@ -112,7 +112,6 @@ Considers a class of TD procedures that make greater alterations to more recent 
 $$\Delta w_t=\alpha\left(P_{t+1}-P_t\right) \sum_{k=1}^t \lambda^{t-k} \nabla_w P_k,$$
 
 where $$0\leq\lambda\leq1$$.  
-Alterations of past predictions can be weighted in ways other than the exponential form given above, and this may be appropriate for particular applications. 
 
 ### Summary
 ----------------------------------------
