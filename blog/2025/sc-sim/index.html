@@ -10,9 +10,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sample Return from all across the Solar System (KISS workshop) | Elena Sorina  Lupu</title>
+    <title>lessons learnt from the spacecraft simulators | Elena Sorina  Lupu</title>
     <meta name="author" content="Elena Sorina  Lupu">
-    <meta name="description" content="Sample return missions">
+    <meta name="description" content="lessons learnt from the spacecraft simulators">
     <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
 
 
@@ -51,7 +51,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://lupusorina.github.io/blog/2024/kiss-workshop/">
+    <link rel="canonical" href="https://lupusorina.github.io/blog/2025/sc-sim/">
     
     <!-- Dark Mode -->
     
@@ -140,45 +140,74 @@
 <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Sample Return from all across the Solar System (KISS workshop)</h1>
-    <p class="post-meta">September 9, 2024</p>
+    <h1 class="post-title">lessons learnt from the spacecraft simulators</h1>
+    <p class="post-meta">May 19, 2025</p>
     <p class="post-tags">
-      <a href="/blog/2024"> <i class="fas fa-calendar fa-sm"></i> 2024 </a>
+      <a href="/blog/2025"> <i class="fas fa-calendar fa-sm"></i> 2025 </a>
         ·  
-        <a href="/blog/tag/astroids">
-          <i class="fas fa-hashtag fa-sm"></i> astroids</a>  
-          <a href="/blog/tag/comets">
-          <i class="fas fa-hashtag fa-sm"></i> comets</a>  
-          <a href="/blog/tag/moon">
-          <i class="fas fa-hashtag fa-sm"></i> moon</a>  
-          <a href="/blog/tag/keck-institute-of-space-studies">
-          <i class="fas fa-hashtag fa-sm"></i> keck-institute-of-space-studies</a>  
+        <a href="/blog/tag/robotics">
+          <i class="fas fa-hashtag fa-sm"></i> robotics</a>  
+          <a href="/blog/tag/electrical-engineering">
+          <i class="fas fa-hashtag fa-sm"></i> electrical_engineering</a>  
           
 
     </p>
   </header>
 
   <article class="post-content">
-    <p>I was fortunate to be invited to this <a href="https://kiss.caltech.edu/short_courses/sample_return.html" rel="external nofollow noopener" target="_blank">short course</a> organized by the Keck Institute of Space Studies called “Sample Return from all across the Solar System”.
-This experience offered me a great opportunity to learn more about the science behind sample return missions and the challenges faced by the scientists and engineers involved in these missions.
-As an engineer, I’m keen to bridge the gap between engineering and the scientific principles underlying different missions.</p>
+    <p>Recently, several friends who have started their own companies or labs at various universities have asked me to share some “lessons learned” from our work on spacecraft simulators.</p>
 
-<p>This course also resonated with a question that deeply interests me: “Where and how can we discover life within the Solar System and beyond?”</p>
+<p>For context, I was a core member of the spacecraft simulator team at Caltech during the early years of my PhD. I led over 100 live demonstrations and contributed to research featured in the following papers presented in the <a href="#references">References</a> section.</p>
 
-<p>Here’s a brief summary of what I’ve learned:</p>
+<p>First, what is a spacecraft simulator? It is a facility consisting of a flat floor with spacecraft hovering above it to simulate the lack of friction in space. See the video below for a demonstration.</p>
 
-<h4 id="talk-1-past-sample-return-missions-and-major-achievements-by-m-zolensky-nasa-johnson-space-center">
-<strong>Talk 1.</strong> Past Sample Return Missions and Major Achievements, by M. Zolensky, NASA Johnson Space Center</h4>
+<p><a href="https://youtu.be/z5mIcnEnws4?si=q8bnn10yEbuJ-isF" rel="external nofollow noopener" target="_blank"><img src="https://img.youtube.com/vi/z5mIcnEnws4/0.jpg" alt="Spacecraft Simulator Demonstration"></a></p>
 
-<p>He gave examples of sample return missions from the Moon:</p>
+<p>Here’s a list of lessons I’ve learnt from the spacecraft simulators (order is random):</p>
+
+<p>Table of Contents:</p>
+
 <ul>
-  <li>Samples from Lunar Near Side: Luna, Apollo, Chang’e missions</li>
-  <li>Samples from Lunar Far Side: Chang’e</li>
+  <li><a href="#availability-of-a-compressor">Availability of a compressor</a></li>
+  <li><a href="#floor-repairability">Floor Repairability</a></li>
+  <li><a href="#strict-cleaning-procedure">Strict Cleaning Procedure</a></li>
+  <li><a href="#air-bearing-design-and-floating-height">Air-Bearing Design and Floating Height</a></li>
+  <li><a href="#safety-and-pressure-systems">Safety and Pressure Systems</a></li>
+  <li><a href="#spacecraft-simulator-air-system-inspection">Spacecraft Simulator Air System Inspection</a></li>
+  <li><a href="#onboard-compressor-efficiency">Onboard Compressor Efficiency</a></li>
+  <li><a href="#isolate-air-sources-on-the-spacecraft-simulator-for-air-flow">Isolate Air Sources on the Spacecraft Simulator for Air Flow</a></li>
+  <li><a href="#hire-high-pressure-experts">Hire High-Pressure Experts</a></li>
+  <li><a href="#floor-material-choice">Floor Material Choice</a></li>
+  <li><a href="#floor-cleaning-tools">Floor Cleaning Tools</a></li>
+  <li><a href="#references">References</a></li>
 </ul>
 
-<p>and talked about some major unanswered questions, such as the nature and amount of water at the south pole, details about the bombardment history, and possible involvement with early life emergence on Earth.</p>
+<h3 id="availability-of-a-compressor">Availability of a compressor</h3>
 
-<p>Then, the Genesis mission (figure below) was presented, which was launched in August 2001 to collect solar wind samples and return them to Earth. Some of the major results of this mission include the measurement of O isotope abundances.</p>
+<p>Ensure access to a reliable compressor or gas refill system. For example, having an on-site compressor streamlines testing compared to relying on external tanks that require frequent swapping or delivery delays.</p>
+
+<h3 id="floor-repairability">Floor Repairability</h3>
+
+<p>This is important.
+Test the floor’s resilience and repair process together with the installer. Intentionally scratch or dent a sample area and verify that it can be restored quickly and cost-effectively. A floor that is easy to repair allows you to run more aggressive experiments, knowing that accidental damage can be fixed without major disruption or cost.</p>
+
+<h3 id="strict-cleaning-procedure">Strict Cleaning Procedure</h3>
+
+<p>Establish a clear, enforceable cleaning protocol. Dust, sweat, shoe residue, and debris can degrade performance, increase friction, and tarnish the floor’s finish.
+You can schedule deep cleaning at regular intervals, although we haven’t done this. Ensure cleaning supplies are always available. We used
+isopropyl alcohol and a microfiber cloth to clean the floor.</p>
+
+<h3 id="be-careful-what-the-air-in-the-spacecraft-simulator-room-is-connected-too">Be careful what the <strong>air</strong> in the spacecraft simulator room is connected too.</h3>
+
+<p>Check the room’s air supply. 
+If the simulator room shares air circuits with other facilities or the external environment, insects, dust, or contaminants can enter and disrupt experiments. Consider maintaining positive pressure with filtered air and isolating critical air lines with backflow preventers.
+It happened to us that bugs got into the room. This was a pain to clean.</p>
+
+<h3 id="residue-from-socks-and-sweat">Residue from Socks and Sweat</h3>
+
+<p>Be aware that users walking in socks can leave behind sweat and residue, which dulls the floor over time.</p>
+
+<h3 id="air-bearing-design-and-floating-height">Air-Bearing Design and Floating Height</h3>
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
@@ -188,7 +217,7 @@ As an engineer, I’m keen to bridge the gap between engineering and the scienti
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/2024-09-09/genesis.jpg" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="genesis" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/2025-05-19/puck.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="mounts" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -196,143 +225,45 @@ As an engineer, I’m keen to bridge the gap between engineering and the scienti
 
     </div>
 </div>
-
-<p>Then, he talked about some experiments that were conducted to collect astroid and comet dust, such as the Long Duration Exposure Facility (figure below). “The Long Duration Exposure Facility, or LDEF, was a cylindrical facility designed to provide long-term experimental data on the outer space environment and its effects on space systems, materials, operations and selected spores’ survival.” It was placed in Low Earth Orbit by the Space Shuttle Challenger in 1984 and was retrieved by the Space Shuttle Columbia in 1990. (source: Wikipedia).
-There were also some experiments conducted on the ISS, such as the Tanpopo experiments, which used silica gel to collect micrometeorites.</p>
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
-        <figure>
-
-  <picture>
-    
-
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/2024-09-09/ldef.jpg" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="ldef" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
-
-  </picture>
-
-</figure>
-
-    </div>
+<div style="text-align: center;">
+(Source: Newway Air Bearings)
 </div>
 
-<!-- Requirements of these samples drove great advances in analytical techniques. -->
+<p>Carefully design and test the air-bearing puck geometry and the target floating height for your simulator’s payloads. 
+The vendors provide plots of the floating height vs the air pressure. 
+Here’s a picture of the pucks we used.</p>
 
-<!-- Asteroids are separated in terms of reflectance spectrum. -->
-<p>Some examples of astroid sample return missions include:</p>
-<ul>
-  <li>Hayabusa recovered &lt; 1g material</li>
-  <li>Hayabusa2 recovered 5.4 grams</li>
-  <li>OSIRIS-REx recovered 121 grams</li>
-</ul>
+<h3 id="safety-and-pressure-systems">Safety and Pressure Systems</h3>
 
-<p>Kind of crazy to think how little material was recovered from these missions, but how much we can learn from them. And one important thing to note is that the samples must be returned in a vacuum, as they are extremely reactive to everything on Earth.</p>
+<p>Be strict about safety. Those things are pressurized so they be unsafe. The high pressure tubes need to be mounted well. Here’s a <a href="https://www.youtube.com/watch?v=ZywM18-l-74" rel="external nofollow noopener" target="_blank">video</a> of a failed pressure system and a watermelon. These things can be deadly, if not handled properly.</p>
 
-<p>Some examples of comet sample return missions include:</p>
-<ul>
-  <li>Stardust: 81P/Wild 2</li>
-  <li>Rosetta from 67P/Churyumov-Gerasimenko</li>
-</ul>
+<h3 id="spacecraft-simulator-air-system-inspection">Spacecraft Simulator Air System Inspection</h3>
 
-<p>I also learnt that the “P” in 67P stands for Period comet.</p>
+<p>Define a regular maintenance schedule for all pressurized systems. Unexpected leaks can cause sudden system failure, especially before a demo.</p>
 
-<p>Some other lessons learned: samples must be returned in an airtight container. Hhe health and safety should be 
-the primary mission priority, sample analysis techniques continue to evolve, team membership should be very inclusive and flexible and samples will be extremely reactive to everything on Earth.</p>
+<h3 id="onboard-compressor-efficiency">Onboard Compressor Efficiency</h3>
 
-<p>I really love learning about all the different space missions and the science behind them. When I was in high school, I had this challenge with myself to learn by heart all the different NASA missions to date.</p>
+<p>During my time at Caltech, I invited an on-board compressor system that was running continuously and helped maintain the pressure without needing to refill the tanks on-board the spacecraft simulator.
+I used really basic materials, but it worked. I think a similar device could be built and will be more efficient than constant refilling.</p>
 
-<h4 id="talk-2-linking-the-protosolar-disk-with-the-inner-solar-system-by-prof-françois-tissot">
-<strong>Talk 2</strong> “Linking the protosolar disk with the inner Solar System”, by Prof. François Tissot.</h4>
+<h3 id="isolate-air-sources-on-the-spacecraft-simulator-for-air-flow">Isolate Air Sources on the Spacecraft Simulator for Air Flow</h3>
 
-<p>He started by presenting the different types of meteorites:</p>
-<ul>
-  <li>Stony meteorites, from crusts/mantles</li>
-  <li>Iron meteortites, from cores</li>
-  <li>Stony-iron meteorites</li>
-  <li>Chondrites (figure below)</li>
-</ul>
+<p>Our spacecraft simulator has tanks at the top and at the bottom. The bottom tanks are in charge of supplying air to the air-bearing pucks. The top tanks are in charge of supplying air to the thrusters. 
+Separate the air lines for these 2 regions to ensure constant flow.</p>
 
-<p>He talked about isotope anomalies.
-There were quite some details that were hard to follow for me, because I am not a geologist,
-but I got the general idea. Maybe I should do a 3rd Masters in geology.</p>
+<h3 id="hire-high-pressure-experts">Hire High-Pressure Experts</h3>
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
-        <figure>
+<p>Consult or employ qualified high-pressure system specialists. They can assist with system design, ensure regulatory compliance, verify installation quality, and train operators.</p>
 
-  <picture>
-    
+<h1 id="references">References</h1>
 
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/2024-09-09/meteorite.jpg" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="meteorite" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+<p>[1]R. Foust, <strong>E.S. Lupu</strong>, Y.K. Nakka, S.J. Chung, F.Y. Hadaegh, “Autonomous in-orbit satellite assembly from a modular heterogeneous swarm”, Acta Astronautica 2020</p>
 
-  </picture>
+<p>[2] K. Matsuka, <strong>E.S. Lupu</strong>, Y.K. Nakka, R. Foust, S.J. Chung, F. Hadægh, “Distributed multi-target relative pose estimation for cooperative spacecraft swarm”, International Workshop on Satellite Constellations and Formation Flying (IWSCFF) 2019</p>
 
-</figure>
+<p>[3] R. Foust, <strong>E.S. Lupu</strong>, Y.K. Nakka, S.J. Chung, F.Y. Hadaegh, “Ultra-soft electromagnetic docking with applications to in-orbit assembly”, 69th International Astronautical Congress, Bremen, Germany</p>
 
-    </div>
-</div>
-
-<p>He also mentioned that Venus return missions are very important.
-I also learned about the chrondritic model, which models the composition of Earth. Scientists are arguing whether this model is correct or not.
-Also, that isotopic anomalies are very important for understanding the formation of the solar system.</p>
-
-<h4 id="talk-3-dynamical-evolution-by-prof-karen-meech">
-<strong>Talk 3</strong> “Dynamical Evolution” by Prof. Karen Meech</h4>
-
-<p>I really wish I would have attended this talk, but I had to attend another meeting at that time. I will try to find the recording and watch it.</p>
-
-<h4 id="talk-4-ocean-worlds-and-habitability-by-prof-jonathan-lunine">
-<strong>Talk 4</strong> Ocean Worlds and Habitability, by Prof. Jonathan Lunine</h4>
-
-<p>Some of the facts I learned from the talk are below:</p>
-
-<ul>
-  <li>Oceanworld are bodies with substantial liquid water on their surfaces or within their interiors. They are very interesting for astrobiology.</li>
-  <li>Habitability requires that three or four general conditions be met: energy, appropriate physical and chemical conditions, solvent, and elemental requirements.</li>
-  <li>Conditions for abiogenesis is still a mystery (habitability bottleneck).</li>
-  <li>Types of measurements to require habilitability: geophysical, chemical, isotopic, and electromagnetic.</li>
-  <li>The oceans of Europa were discovered by a magnetometer on Galileo.</li>
-</ul>
-
-<p>Saturn’s moon Enceladus (figure below) is one of the easiest to explore. There is evidence of an ocean. 
-There are organics in the Enceladus ocean, but their identity is not known.
-There is evidence there is redox chemistry in the ocean of Enceladus.</p>
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
-        <figure>
-
-  <picture>
-    
-
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/2024-09-09/enceladus.jpg" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="enceladus" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
-
-  </picture>
-
-</figure>
-
-    </div>
-</div>
-
-<p>Europa Clipper will orbit Jupiter and make 50 fly-bys of Europa. 
-For ocean worlds, present-day habitability can be established by in-situ measurements.</p>
-
-<p>I liked that he presented both pros and cons for sample return missions.</p>
-
-<h4 id="talk-5---ices-in-the-outer-solar-system-and-their-connection-to-the-protoplanetary-disk-by-prof-mike-brown">
-<strong>Talk 5</strong> - Ices in the Outer Solar System and their Connection to the Protoplanetary Disk, by Prof. Mike Brown</h4>
-
-<p>I didn’t know, but during the early solar system, the planets were closer together.
-He also showed and explained us plots of reflectance spectra (reflectance vs. wavelength), which was very interesting to see.</p>
-
-<p>I also realized I wish I would know more about chemistry.</p>
-
-<hr>
-
-<p>Source of the images: The internet</p>
+<p>[4] Y.K. Nakka, R. Foust, <strong>E.S. Lupu</strong>, D.B. Elliott, I.S. Crowell, S.J. Chung, F.Y. Hadaegh, “A Six Degree-of-Freedom Spacecraft Dynamics Simulator for Formation Control Research”, AAS/AIAA Astrodynamics Specialist Conference</p>
 
   </article>
 
@@ -347,12 +278,6 @@ He also showed and explained us plots of reflectance spectra (reflectance vs. wa
     <!-- Adds related posts to the end of an article -->
     <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
     <p class="mb-2">Here are some more articles you might like to read next:</p>
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2025/sc-sim/">lessons learnt from the spacecraft simulators</a>
-  </li>
-
   
 
   <li class="my-2">
@@ -375,6 +300,12 @@ He also showed and explained us plots of reflectance spectra (reflectance vs. wa
 
   <li class="my-2">
     <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2024/books_elon_musk/">Review Book "Elon Musk" by Walter Isaacson (work in progress)</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2024/git/">partial file staging</a>
   </li>
 
 </div>

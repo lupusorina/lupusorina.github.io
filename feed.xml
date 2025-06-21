@@ -1,5 +1,113 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://lupusorina.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lupusorina.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-06-21T00:22:21+00:00</updated><id>https://lupusorina.github.io/feed.xml</id><title type="html">blank</title><subtitle>website
-</subtitle><entry><title type="html">Predicting the future</title><link href="https://lupusorina.github.io/blog/2025/predicting_the_future/" rel="alternate" type="text/html" title="Predicting the future" /><published>2025-02-27T13:39:00+00:00</published><updated>2025-02-27T13:39:00+00:00</updated><id>https://lupusorina.github.io/blog/2025/predicting_the_future</id><content type="html" xml:base="https://lupusorina.github.io/blog/2025/predicting_the_future/"><![CDATA[<p>In this article, I’ll talk about some multi-agent ideas that fascinate me.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://lupusorina.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lupusorina.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-06-21T00:22:40+00:00</updated><id>https://lupusorina.github.io/feed.xml</id><title type="html">blank</title><subtitle>website
+</subtitle><entry><title type="html">lessons learnt from the spacecraft simulators</title><link href="https://lupusorina.github.io/blog/2025/sc-sim/" rel="alternate" type="text/html" title="lessons learnt from the spacecraft simulators" /><published>2025-05-19T13:39:00+00:00</published><updated>2025-05-19T13:39:00+00:00</updated><id>https://lupusorina.github.io/blog/2025/sc-sim</id><content type="html" xml:base="https://lupusorina.github.io/blog/2025/sc-sim/"><![CDATA[<p>Recently, several friends who have started their own companies or labs at various universities have asked me to share some “lessons learned” from our work on spacecraft simulators.</p>
+
+<p>For context, I was a core member of the spacecraft simulator team at Caltech during the early years of my PhD. I led over 100 live demonstrations and contributed to research featured in the following papers presented in the <a href="#references">References</a> section.</p>
+
+<p>First, what is a spacecraft simulator? It is a facility consisting of a flat floor with spacecraft hovering above it to simulate the lack of friction in space. See the video below for a demonstration.</p>
+
+<p><a href="https://youtu.be/z5mIcnEnws4?si=q8bnn10yEbuJ-isF"><img src="https://img.youtube.com/vi/z5mIcnEnws4/0.jpg" alt="Spacecraft Simulator Demonstration" /></a></p>
+
+<p>Here’s a list of lessons I’ve learnt from the spacecraft simulators (order is random):</p>
+
+<p>Table of Contents:</p>
+
+<ul>
+  <li><a href="#availability-of-a-compressor">Availability of a compressor</a></li>
+  <li><a href="#floor-repairability">Floor Repairability</a></li>
+  <li><a href="#strict-cleaning-procedure">Strict Cleaning Procedure</a></li>
+  <li><a href="#air-bearing-design-and-floating-height">Air-Bearing Design and Floating Height</a></li>
+  <li><a href="#safety-and-pressure-systems">Safety and Pressure Systems</a></li>
+  <li><a href="#spacecraft-simulator-air-system-inspection">Spacecraft Simulator Air System Inspection</a></li>
+  <li><a href="#onboard-compressor-efficiency">Onboard Compressor Efficiency</a></li>
+  <li><a href="#isolate-air-sources-on-the-spacecraft-simulator-for-air-flow">Isolate Air Sources on the Spacecraft Simulator for Air Flow</a></li>
+  <li><a href="#hire-high-pressure-experts">Hire High-Pressure Experts</a></li>
+  <li><a href="#floor-material-choice">Floor Material Choice</a></li>
+  <li><a href="#floor-cleaning-tools">Floor Cleaning Tools</a></li>
+  <li><a href="#references">References</a></li>
+</ul>
+
+<h3 id="availability-of-a-compressor">Availability of a compressor</h3>
+
+<p>Ensure access to a reliable compressor or gas refill system. For example, having an on-site compressor streamlines testing compared to relying on external tanks that require frequent swapping or delivery delays.</p>
+
+<h3 id="floor-repairability">Floor Repairability</h3>
+
+<p>This is important.
+Test the floor’s resilience and repair process together with the installer. Intentionally scratch or dent a sample area and verify that it can be restored quickly and cost-effectively. A floor that is easy to repair allows you to run more aggressive experiments, knowing that accidental damage can be fixed without major disruption or cost.</p>
+
+<h3 id="strict-cleaning-procedure">Strict Cleaning Procedure</h3>
+
+<p>Establish a clear, enforceable cleaning protocol. Dust, sweat, shoe residue, and debris can degrade performance, increase friction, and tarnish the floor’s finish.
+You can schedule deep cleaning at regular intervals, although we haven’t done this. Ensure cleaning supplies are always available. We used
+isopropyl alcohol and a microfiber cloth to clean the floor.</p>
+
+<h3 id="be-careful-what-the-air-in-the-spacecraft-simulator-room-is-connected-too">Be careful what the <strong>air</strong> in the spacecraft simulator room is connected too.</h3>
+
+<p>Check the room’s air supply. 
+If the simulator room shares air circuits with other facilities or the external environment, insects, dust, or contaminants can enter and disrupt experiments. Consider maintaining positive pressure with filtered air and isolating critical air lines with backflow preventers.
+It happened to us that bugs got into the room. This was a pain to clean.</p>
+
+<h3 id="residue-from-socks-and-sweat">Residue from Socks and Sweat</h3>
+
+<p>Be aware that users walking in socks can leave behind sweat and residue, which dulls the floor over time.</p>
+
+<h3 id="air-bearing-design-and-floating-height">Air-Bearing Design and Floating Height</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/2025-05-19/puck.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="mounts" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div style="text-align: center;">
+(Source: Newway Air Bearings)
+</div>
+
+<p>Carefully design and test the air-bearing puck geometry and the target floating height for your simulator’s payloads. 
+The vendors provide plots of the floating height vs the air pressure. 
+Here’s a picture of the pucks we used.</p>
+
+<h3 id="safety-and-pressure-systems">Safety and Pressure Systems</h3>
+
+<p>Be strict about safety. Those things are pressurized so they be unsafe. The high pressure tubes need to be mounted well. Here’s a <a href="https://www.youtube.com/watch?v=ZywM18-l-74">video</a> of a failed pressure system and a watermelon. These things can be deadly, if not handled properly.</p>
+
+<h3 id="spacecraft-simulator-air-system-inspection">Spacecraft Simulator Air System Inspection</h3>
+
+<p>Define a regular maintenance schedule for all pressurized systems. Unexpected leaks can cause sudden system failure, especially before a demo.</p>
+
+<h3 id="onboard-compressor-efficiency">Onboard Compressor Efficiency</h3>
+
+<p>During my time at Caltech, I invited an on-board compressor system that was running continuously and helped maintain the pressure without needing to refill the tanks on-board the spacecraft simulator.
+I used really basic materials, but it worked. I think a similar device could be built and will be more efficient than constant refilling.</p>
+
+<h3 id="isolate-air-sources-on-the-spacecraft-simulator-for-air-flow">Isolate Air Sources on the Spacecraft Simulator for Air Flow</h3>
+
+<p>Our spacecraft simulator has tanks at the top and at the bottom. The bottom tanks are in charge of supplying air to the air-bearing pucks. The top tanks are in charge of supplying air to the thrusters. 
+Separate the air lines for these 2 regions to ensure constant flow.</p>
+
+<h3 id="hire-high-pressure-experts">Hire High-Pressure Experts</h3>
+
+<p>Consult or employ qualified high-pressure system specialists. They can assist with system design, ensure regulatory compliance, verify installation quality, and train operators.</p>
+
+<h1 id="references">References</h1>
+
+<p>[1]R. Foust, <strong>E.S. Lupu</strong>, Y.K. Nakka, S.J. Chung, F.Y. Hadaegh, “Autonomous in-orbit satellite assembly from a modular heterogeneous swarm”, Acta Astronautica 2020</p>
+
+<p>[2] K. Matsuka, <strong>E.S. Lupu</strong>, Y.K. Nakka, R. Foust, S.J. Chung, F. Hadægh, “Distributed multi-target relative pose estimation for cooperative spacecraft swarm”, International Workshop on Satellite Constellations and Formation Flying (IWSCFF) 2019</p>
+
+<p>[3] R. Foust, <strong>E.S. Lupu</strong>, Y.K. Nakka, S.J. Chung, F.Y. Hadaegh, “Ultra-soft electromagnetic docking with applications to in-orbit assembly”, 69th International Astronautical Congress, Bremen, Germany</p>
+
+<p>[4] Y.K. Nakka, R. Foust, <strong>E.S. Lupu</strong>, D.B. Elliott, I.S. Crowell, S.J. Chung, F.Y. Hadaegh, “A Six Degree-of-Freedom Spacecraft Dynamics Simulator for Formation Control Research”, AAS/AIAA Astrodynamics Specialist Conference</p>]]></content><author><name></name></author><category term="robotics" /><category term="electrical_engineering" /><summary type="html"><![CDATA[lessons learnt from the spacecraft simulators]]></summary></entry><entry><title type="html">Predicting the future</title><link href="https://lupusorina.github.io/blog/2025/predicting_the_future/" rel="alternate" type="text/html" title="Predicting the future" /><published>2025-02-27T13:39:00+00:00</published><updated>2025-02-27T13:39:00+00:00</updated><id>https://lupusorina.github.io/blog/2025/predicting_the_future</id><content type="html" xml:base="https://lupusorina.github.io/blog/2025/predicting_the_future/"><![CDATA[<p>In this article, I’ll talk about some multi-agent ideas that fascinate me.
 I hope you find them interesting as well and maybe one day, someone will pick up on these ideas and make them a reality.</p>
 
 <p>Let’s talk about the possibility of predicting the future by modelling the influence of each person’s decisions on the world.</p>
