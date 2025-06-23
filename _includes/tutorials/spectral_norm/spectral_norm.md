@@ -1,5 +1,5 @@
 ## Spectral Normalization
-
+<!-- 
 We will prove the following theorem:
 
 **Theorem**: If the weights of a DNN are spectrally normalized [1, 2], then the function is Lipschitz continuous.
@@ -25,4 +25,4 @@ Thus, $f$ is Lipschitz continuous with constant $|w_{sn}|$.
 
 [2] T. Miyato, T. Kataoka, M. Koyama, Y. Yoshida, ``Spectral Normalization for Generative Adversarial Networks", https://arxiv.org/abs/1802.05957
 
-
+ -->
