@@ -135,42 +135,36 @@
 
     <!-- Content -->
     <div class="container mt-5">
-      <h2 id="spectral-normalization">Spectral Normalization</h2>
+      <!-- 
+## Spectral Normalization
 
-<p>We will prove the following theorem:</p>
+We will prove the following theorem:
 
-<p><strong>Theorem</strong>: If the weights of a DNN are spectrally normalized [1, 2], then the function is Lipschitz continuous.</p>
+**Theorem**: If the weights of a DNN are spectrally normalized [1, 2], then the function is Lipschitz continuous.
 
-<p>For this proof, we will start step by step, from a simple case first.</p>
+For this proof, we will start step by step, from a simple case first.
 
-<p>Let <code class="language-plaintext highlighter-rouge">f(x) = relu(wx + b)</code>, where $<code class="language-plaintext highlighter-rouge">f: \mathbb{R} \rightarrow \mathbb{R}</code>$, $w \in \mathbb{R}$, $b \in \mathbb{R}$, and $relu(x) = \max(0, x)$ is the activation function. We will prove that $f$ is Lipschitz continuous.</p>
+Let `f(x) = relu(wx + b)`, where $`f: \mathbb{R} \rightarrow \mathbb{R}`$, $w \in \mathbb{R}$, $b \in \mathbb{R}$, and $relu(x) = \max(0, x)$ is the activation function. We will prove that $f$ is Lipschitz continuous.
 
-<p>By definition, $w_{sn} = \frac{w}{\sigma(w)}$</p>
+By definition, $w_{sn} = \frac{w}{\sigma(w)}$ 
 
-<p>is the spectrally normalized weight, where $\sigma(w)$ is the largest singular value of $w$.</p>
+is the spectrally normalized weight, where $\sigma(w)$ is the largest singular value of $w$.
 
-<p>Let’s assume no activation function. Then</p>
+Let's assume no activation function. Then 
 
-<p>\begin{equation}
+\begin{equation}
 |f(x_1) - f(x_2)| = |w_{sn}(x_1 - x_2)| = |w_{sn}||x_1 - x_2|
-\end{equation}</p>
+\end{equation}
 
-<table>
-  <tbody>
-    <tr>
-      <td>Thus, $f$ is Lipschitz continuous with constant $</td>
-      <td>w_{sn}</td>
-      <td>$.</td>
-    </tr>
-  </tbody>
-</table>
+Thus, $f$ is Lipschitz continuous with constant $|w_{sn}|$.
 
-<p><strong>References</strong></p>
 
-<p>[1] https://pytorch.org/docs/stable/generated/torch.nn.utils.spectral_norm.html</p>
+**References**
 
-<p>[2] T. Miyato, T. Kataoka, M. Koyama, Y. Yoshida, ``Spectral Normalization for Generative Adversarial Networks”, https://arxiv.org/abs/1802.05957</p>
+[1] https://pytorch.org/docs/stable/generated/torch.nn.utils.spectral_norm.html
 
+[2] T. Miyato, T. Kataoka, M. Koyama, Y. Yoshida, ``Spectral Normalization for Generative Adversarial Networks", https://arxiv.org/abs/1802.05957
+ -->
 
     </div>
 
