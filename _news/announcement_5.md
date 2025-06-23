@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-**June 21th, 2025:** I am organizing the [Space Robotics Workshop](https://roboticsconference.org) at RSS 2025.
+**June 21th, 2025:** We won the best paper award at the [Space Robotics Workshop](https://roboticsconference.org) at RSS 2025.
