@@ -5,7 +5,7 @@ permalink: /tutorials/spectral_norm/
 ---
 
 
-
+<!-- 
 ## Spectral Normalization
 
 We will prove the following theorem:
@@ -34,4 +34,4 @@ Thus, $f$ is Lipschitz continuous with constant $|w_{sn}|$.
 [1] https://pytorch.org/docs/stable/generated/torch.nn.utils.spectral_norm.html
 
 [2] T. Miyato, T. Kataoka, M. Koyama, Y. Yoshida, ``Spectral Normalization for Generative Adversarial Networks", https://arxiv.org/abs/1802.05957
-
+ -->
