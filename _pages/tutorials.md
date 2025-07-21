@@ -6,20 +6,18 @@ nav: true
 nav_order: 4
 ---
 
-A selection of tutorials and lecture notes in robotics, controls, and learning organized by difficulty.
-In general, a **Beginner** tutorial requires undergraduate-level knowledge in math, an **Intermediate** tutorial requires a graduate-level understanding and some domain knowledge, and an **Advanced** tutorial requires a deep understanding of the subject.
-
+A selection of tutorials and lecture notes in robotics, controls, and learning.
 For tutorials with executable code, click on the "Solutions" link to view the code. 
 
-<h3> A. Beginner Level </h3>
+<!-- <h3> A. Beginner Level </h3> -->
 
-1. [**Spectral normalization for a DNN** (work in progress)](/tutorials/spectral_norm/)
+<!-- 1. [**Spectral normalization for a DNN** (work in progress)](/tutorials/spectral_norm/) -->
 
 <!-- 2. [**Understanding collisions in MuJoCo** (work in progress)](/tutorials/spectral_norm/) -->
 
-3. [**Inertia vs. Scaled Inertia in MuJoCo** (work in progress)](/tutorials/inertia_mujoco/)
+<!-- 3. [**Inertia vs. Scaled Inertia in MuJoCo** (work in progress)](/tutorials/inertia_mujoco/)
 
-<h3> B. Intermediate Level </h3>
+<h3> B. Intermediate Level </h3> -->
 
 
 1. **Tracking controller for a car with Ackermann steering**
@@ -34,5 +32,5 @@ For tutorials with executable code, click on the "Solutions" link to view the co
 
 3. [**TD Learning**](/tutorials/td_learning/)
 
-<h3> C. Advanced Level </h3>
+<!-- <h3> C. Advanced Level </h3> -->
 
