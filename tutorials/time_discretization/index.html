@@ -144,12 +144,12 @@
 \[G_0 = \int_0^T r(t) dt,\]
 
 <p>where \(r(t)\) is the reward function and \(T\) is the time horizon, and \(dt\) is the time step.
-In literature, people use the discounted reward, which just adds a discount factor to the integral, as follows</p>
+In literature, people use the discounted return, which just adds a discount factor to the integral, as follows</p>
 
 \[\int_0^T \gamma^t r(t) dt.\]
 
 <p>where \(\gamma\) is the discount factor between \([0, 1)\).
-An alternative is to use an exponential discount factor, which is more common if you come from a controls background and more intuitive.</p>
+An alternative is to use an exponential discount factor, which is more common if you come from a controls background. I find this perspective more intuitive, as the exponential form defines a natural time constant, the horizon over which future rewards contribute, rather than relying on a unitless multiplicative factor per step. The latter is more common with financial and economics literature.</p>
 
 \[\int_0^T e^{-\gamma_c t} r(t) dt.\]
 
@@ -201,6 +201,8 @@ This way, your algorithm is invariant to the discretization, rather than treatin
   <li>Don’t forget to multiply the reward by \(\Delta t\).</li>
 </ul>
 
+<h2 id="acknowledgments">Acknowledgments</h2>
+<p>To <a href="https://kris.pengy.ca" rel="external nofollow noopener" target="_blank">Kris de Asis</a> for feedback and corrections on the blog post.</p>
 
     </div>
 
