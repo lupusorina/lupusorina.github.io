@@ -32,5 +32,9 @@ For tutorials with executable code, click on the "Solutions" link to view the co
 
 3. [**TD Learning**](/tutorials/td_learning/)
 
+3. [**Temporal Abstraction**](/tutorials/temporal_abstraction/)
+
+4. [**Time Discretization in RL**](/tutorials/time_discretization/)
+
 <!-- <h3> C. Advanced Level </h3> -->
 
