@@ -151,30 +151,38 @@ Let’s transform this integral in discrete time (using the Riemann sums), as fo
 \[\sum_{k=1}^{N} e^{-\gamma_c k \Delta t} r(k \Delta t) \Delta t,\]
 
 <p>where \(N = \frac{T}{\Delta t}\).
-Using the notation of $\gamma_d = e^{-\gamma_c \Delta t}$, we can rewrite the sum as</p>
+Using the notation of \(\gamma_d = e^{-\gamma_c \Delta t}\), we can rewrite the sum as</p>
 
 \[\sum_{k=1}^{N} \gamma_d^k r(k \Delta t) \Delta t,\]
 
 <p>where \(\gamma_d\) is the discrete discount factor.</p>
 
 <p>In practice most RL papers just treat the discrete discount factor \(\gamma_d\) as a hyperparam between \([0, 1)\). But if you think in continuous time, there’s a clean way to interpret it and compute the corresponding discrete \(\gamma_d\). In fact, \(\gamma_c\) has units of \(1/time\), so it sets a natural timescale. 
-This way, your algorithm is invariant to the discretization, rather than treating as a random tuning knob, like in every other RL paper.</p>
+This way, your algorithm is invariant to the discretization, rather than treating \(\gamma_d\) as a random tuning knob, like in every other RL paper.</p>
 
-<p>Ok, so how would you think about it? A good start is to say: after \(H\) steps, future rewards contribute less than \(10\%\) of their original weight. Let \(\epsilon=0.1\), then
-\(e^{-\gamma_c H} = \epsilon,\)
-or 
-\(\ln e^{-\gamma_c H} = \ln(\epsilon),\)
-with the final result being
-\(H = \frac{\ln(\frac{1}{\epsilon})}{\gamma_c}.\)
-So for \(\gamma_c = 0.1 s^{-1}\), we get a horizon of \(H = 23\) seconds.
-Let’s compute \(\gamma_d\), which is
-\(\gamma_d = e^{-\gamma_c \Delta t},\)</p>
+<p>Ok, so how would you think about it? A good start is to say: after \(H\) steps, future rewards contribute less than \(10\%\) of their original weight. Let \(\epsilon=0.1\), then</p>
+
+\[e^{-\gamma_c H} = \epsilon,\]
+
+<p>or</p>
+
+\[\ln e^{-\gamma_c H} = \ln(\epsilon),\]
+
+<p>with the final result being</p>
+
+\[H = \frac{\ln(\frac{1}{\epsilon})}{\gamma_c}.\]
+
+<p>So for \(\gamma_c = 0.1 s^{-1}\), we get a horizon of \(H = 23\) seconds.</p>
+
+<p>Let’s compute \(\gamma_d\), which is</p>
+
+\[\gamma_d = e^{-\gamma_c \Delta t},\]
 
 <p>so for a \(\Delta T=0.05 s\) or a rate of \(20 Hz\), we have</p>
 
 \[\gamma_d = e^{-0.1 \times 0.05} = 0.995.\]
 
-<p>Note that for episodic RL, the episode ends at a fixed time $T$. If the effective horizon $H$ is shorter than the episode length, then discounting is what really controls how far ahead the agent plans. If the episode length is shorter than the effective horizon, then the episode cutoff dominates.</p>
+<p>Note that for episodic RL, the episode ends at a fixed time \(T\). If the effective horizon \(H\) is shorter than the episode length, then discounting is what really controls how far ahead the agent plans. If the episode length is shorter than the effective horizon, then the episode cutoff dominates.</p>
 
 <p>Here’s the summary:</p>
 
