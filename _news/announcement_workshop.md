@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-**August 20-21st, 2025:** Organized a workshop on "Reinforcement Learning + Robotics" at University of Alberta.
+**August 20-21, 2025:** Organized a workshop on "Reinforcement Learning + Robotics" at University of Alberta.
