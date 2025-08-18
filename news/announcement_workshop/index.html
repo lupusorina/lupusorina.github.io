@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Time Discretization in RL | Elena Sorina  Lupu</title>
+    <title>Announcement_workshop | Elena Sorina  Lupu</title>
     <meta name="author" content="Elena Sorina  Lupu">
     <meta name="description" content="website
 ">
@@ -52,7 +52,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://lupusorina.github.io/tutorials/time_discretization/">
+    <link rel="canonical" href="https://lupusorina.github.io/news/announcement_workshop/">
     
     <!-- Dark Mode -->
     
@@ -135,57 +135,25 @@
 
     <!-- Content -->
     <div class="container mt-5">
-      <p>Let’s talk about time discretizations in RL, specifically in the context of rewards. To write this summary, I got inspired by the paper “An Idiosyncrasy of Time-discretization in Reinforcement Learning” by <a href="https://kris.pengy.ca" rel="external nofollow noopener" target="_blank">Kris de Asis</a> and <a href="http://incompleteideas.net" rel="external nofollow noopener" target="_blank">Richard S. Sutton</a> and by all the inconsistencies I see in many of the RL papers, especially empirical ones.</p>
+      <!-- _layouts/post.html -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-<p>Time discretization is a key consideration when implementing reinforcement learning algorithms on a robot. Most robotic systems operate in discrete time, with control inputs applied at fixed frequencies.</p>
+<div class="post">
 
-<p>Let the undiscounted return in continuous time be</p>
+  <header class="post-header">
+    <h1 class="post-title">Announcement_workshop</h1>
+    <p class="post-meta">March 14, 2025</p>
+    <p class="post-tags">
+      <a href="/blog/2025"> <i class="fas fa-calendar fa-sm"></i> 2025 </a>
 
-\[G_t = \int_0^T r(t) dt,\]
+    </p>
+  </header>
 
-<p>where \(r(t)\) is the reward function and \(T\) is the time horizon, and \(dt\) is the time step.
-Oftentimes, people use the discounted reward, which just adds a discount factor to the integral
-\(\int_0^T e^{-\gamma_c t} r(t) dt.\)
-Let’s transform this integral in discrete time (using the Riemann sums), as follows</p>
+  <article class="post-content">
+    <p><strong>August 20-21st, 2025:</strong> Organized a workshop on “Reinforcement Learning + Robotics” at University of Alberta.</p>
 
-\[\sum_{k=1}^{N} e^{-\gamma_c k \Delta t} r(k \Delta t) \Delta t,\]
-
-<p>where \(N = \frac{T}{\Delta t}\).
-Using the notation of $\gamma_d = e^{-\gamma_c \Delta t}$, we can rewrite the sum as</p>
-
-\[\sum_{k=1}^{N} \gamma_d^k r(k \Delta t) \Delta t,\]
-
-<p>where \(\gamma_d\) is the discrete discount factor.</p>
-
-<p>In practice most RL papers just treat the discrete discount factor \(\gamma_d\) as a hyperparam between \([0, 1)\). But if you think in continuous time, there’s a clean way to interpret it and compute the corresponding discrete \(\gamma_d\). In fact, \(\gamma_c\) has units of \(1/time\), so it sets a natural timescale. 
-This way, your algorithm is invariant to the discretization, rather than treating as a random tuning knob, like in every other RL paper.</p>
-
-<p>Ok, so how would you think about it? A good start is to say: after \(H\) steps, future rewards contribute less than \(10\%\) of their original weight. Let \(\epsilon=0.1\), then
-\(e^{-\gamma_c H} = \epsilon,\)
-or 
-\(\ln e^{-\gamma_c H} = \ln(\epsilon),\)
-with the final result being
-\(H = \frac{\ln(\frac{1}{\epsilon})}{\gamma_c}.\)
-So for \(\gamma_c = 0.1 s^{-1}\), we get a horizon of \(H = 23\) seconds.
-Let’s compute \(\gamma_d\), which is
-\(\gamma_d = e^{-\gamma_c \Delta t},\)</p>
-
-<p>so for a \(\Delta T=0.05 s\) or a rate of \(20 Hz\), we have</p>
-
-\[\gamma_d = e^{-0.1 \times 0.05} = 0.995.\]
-
-<p>Note that for episodic RL, the episode ends at a fixed time $T$. If the effective horizon $H$ is shorter than the episode length, then discounting is what really controls how far ahead the agent plans. If the episode length is shorter than the effective horizon, then the episode cutoff dominates.</p>
-
-<p>Here’s the summary:</p>
-
-<ul>
-  <li>\(\gamma_d\) depends explicitly on \(\Delta t\).</li>
-  <li>If you change the simulation/control frequency (e.g. from 10 Hz to 100 Hz ), the same \(\gamma_d\) no longer means the same planning horizon.</li>
-  <li>What’s invariant is \(\gamma_c\), because it has physical units ( \(1 /\) time ).</li>
-  <li>Best practice: think in continuous time first, then compute \(\gamma_d\).</li>
-  <li>Don’t forget to multiply the reward by \(\Delta t\).</li>
-</ul>
-
+  </article>
+</div>
 
     </div>
 
