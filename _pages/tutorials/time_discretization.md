@@ -9,17 +9,25 @@ Let's talk about time discretizations in RL, specifically in the context of rewa
 
 Time discretization is a key consideration when implementing reinforcement learning algorithms on a robot. Most robotic systems operate in discrete time, with control inputs applied at fixed frequencies. 
 
-Let the undiscounted return in continuous time be
+Let the undiscounted return from the start state in continuous time be
 
 $$
-G_t = \int_0^T r(t) dt,
+G_0 = \int_0^T r(t) dt,
 $$
 
 where $$r(t)$$ is the reward function and $$T$$ is the time horizon, and $$dt$$ is the time step.
-Oftentimes, people use the discounted reward, which just adds a discount factor to the integral
+In literature, people use the discounted reward, which just adds a discount factor to the integral, as follows
+$$
+\int_0^T \gamma^t r(t) dt.
+$$
+where $$\gamma$$ is the discount factor between $$[0, 1)$$.
+An alternative is to use an exponential discount factor, which is more common if you come from a controls background and more intuitive.
+
 $$
 \int_0^T e^{-\gamma_c t} r(t) dt.
 $$
+
+
 Let's transform this integral in discrete time (using the Riemann sums), as follows
 
 $$
@@ -75,7 +83,7 @@ Note that for episodic RL, the episode ends at a fixed time $$T$$. If the effect
 Here's the summary:
 
 - $$\gamma_d$$ depends explicitly on $$\Delta t$$. 
-- If you change the simulation/control frequency (e.g. from 10 Hz to 100 Hz ), the same $$\gamma_d$$ no longer means the same planning horizon.
+- If you change the simulation/control frequency (e.g., from 10 Hz to 100 Hz), the same $$\gamma_d$$ no longer means the same planning horizon.
 - What's invariant is $$\gamma_c$$, because it has physical units ( $$1 /$$ time ).
 - Best practice: think in continuous time first, then compute $$\gamma_d$$.
 - Don't forget to multiply the reward by $$\Delta t$$.
