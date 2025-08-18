@@ -27,7 +27,7 @@ $$
 $$
 
 where $$N = \frac{T}{\Delta t}$$.
-Using the notation of $\gamma_d = e^{-\gamma_c \Delta t}$, we can rewrite the sum as
+Using the notation of $$\gamma_d = e^{-\gamma_c \Delta t}$$, we can rewrite the sum as
 
 $$
 \sum_{k=1}^{N} \gamma_d^k r(k \Delta t) \Delta t,
@@ -36,22 +36,30 @@ $$
 where $$\gamma_d$$ is the discrete discount factor.
 
 In practice most RL papers just treat the discrete discount factor $$\gamma_d$$ as a hyperparam between $$[0, 1)$$. But if you think in continuous time, there's a clean way to interpret it and compute the corresponding discrete $$\gamma_d$$. In fact, $$\gamma_c$$ has units of $$1/time$$, so it sets a natural timescale. 
-This way, your algorithm is invariant to the discretization, rather than treating as a random tuning knob, like in every other RL paper.
+This way, your algorithm is invariant to the discretization, rather than treating $$\gamma_d$$ as a random tuning knob, like in every other RL paper.
 
 Ok, so how would you think about it? A good start is to say: after $$H$$ steps, future rewards contribute less than $$10\%$$ of their original weight. Let $$\epsilon=0.1$$, then
+
 $$
 e^{-\gamma_c H} = \epsilon,
 $$
-or 
+
+or
+
 $$
 \ln e^{-\gamma_c H} = \ln(\epsilon),
 $$
+
 with the final result being
+
 $$
 H = \frac{\ln(\frac{1}{\epsilon})}{\gamma_c}.
 $$
+
 So for $$\gamma_c = 0.1 s^{-1}$$, we get a horizon of $$H = 23$$ seconds.
+
 Let's compute $$\gamma_d$$, which is
+
 $$
 \gamma_d = e^{-\gamma_c \Delta t},
 $$
@@ -62,7 +70,7 @@ $$
 \gamma_d = e^{-0.1 \times 0.05} = 0.995.
 $$
 
-Note that for episodic RL, the episode ends at a fixed time $T$. If the effective horizon $H$ is shorter than the episode length, then discounting is what really controls how far ahead the agent plans. If the episode length is shorter than the effective horizon, then the episode cutoff dominates.
+Note that for episodic RL, the episode ends at a fixed time $$T$$. If the effective horizon $$H$$ is shorter than the episode length, then discounting is what really controls how far ahead the agent plans. If the episode length is shorter than the effective horizon, then the episode cutoff dominates.
 
 Here's the summary:
 
