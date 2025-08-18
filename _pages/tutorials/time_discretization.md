@@ -17,9 +17,11 @@ $$
 
 where $$r(t)$$ is the reward function and $$T$$ is the time horizon, and $$dt$$ is the time step.
 In literature, people use the discounted reward, which just adds a discount factor to the integral, as follows
+
 $$
 \int_0^T \gamma^t r(t) dt.
 $$
+
 where $$\gamma$$ is the discount factor between $$[0, 1)$$.
 An alternative is to use an exponential discount factor, which is more common if you come from a controls background and more intuitive.
 
