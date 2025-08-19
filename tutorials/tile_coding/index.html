@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My Code | Sorina  Lupu</title>
+    <title>Tile Coding for Action-Value Functions | Sorina  Lupu</title>
     <meta name="author" content="Sorina  Lupu">
     <meta name="description" content="website
 ">
@@ -52,7 +52,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://lupusorina.github.io/tutorials/inertia_mujoco/">
+    <link rel="canonical" href="https://lupusorina.github.io/tutorials/tile_coding/">
     
     <!-- Dark Mode -->
     
@@ -135,8 +135,98 @@
 
     <!-- Content -->
     <div class="container mt-5">
-      <p>Add image
-[<img src="inertia.png" alt="Inertia vs. Scaled Inertia in MuJoCo">]</p>
+      <h1 id="tile-coding-for-action-value-functions">Tile coding for action-value functions.</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Tile coding is a technique used to represent multi-dimensional continuous spaces.</p>
+
+<p>The space is covered by multiple overlapping <strong>tilings</strong> or grids.
+Tilings are offset from one another by a uniform amount in each dimension. Each tiling partition is a <strong>tile</strong>.
+A state is represented by the set of tiles it falls into across all tilings. 
+This representation produces a sparse, binary feature vector, which is both memory-efficient and computationally efficient for moderate-dimensional problems.</p>
+
+<h2 id="tile-coding-example">Tile Coding Example</h2>
+
+<p>The figure below illustrates the concept:</p>
+
+<p><img src="../../assets/img/tutorials/tile_coding/tile_coding.jpg" alt="Tile coding" width="500px" class="center"></p>
+
+<p>For practical implementations, see <a href="https://github.com/MeepMoop/tilecoding" rel="external nofollow noopener" target="_blank">tilecoding</a> and <a href="http://incompleteideas.net/tiles/tiles3.html" rel="external nofollow noopener" target="_blank">tile3</a>.</p>
+
+<h2 id="pros-and-cons">Pros and Cons</h2>
+
+<p>Here are the main strengths and limitations of tile coding:</p>
+
+<p><strong>Advantages:</strong></p>
+<ul>
+  <li>Well-suited for linear function approximation.</li>
+  <li>Simple to implement.</li>
+  <li>Only a small number of features are active at any time, so computationally efficient.</li>
+  <li>Compared to artificial neural networks, tile coding is more stable and less sensitive to hyperparameters.</li>
+  <li>Because the features are indicator functions of overlapping tiles, the linear combination of them can approximate nonlinear functions of the raw state.</li>
+</ul>
+
+<p><strong>Disadvantages:</strong></p>
+<ul>
+  <li>The number of tiles grows with the number of state dimensions. For example, representing a humanoid robot with many degrees of freedom would require a very large number of tiles.</li>
+  <li>Has a fixed representation of the state space. Once the tilings are set, the feature map is static.</li>
+</ul>
+
+<h2 id="linear-function-approximation">Linear Function Approximation</h2>
+
+<p>Consider the state-value function \(V(s_t, \mathbf{w})\) with feature vector \(\boldsymbol{\phi}(s_t)\).<br>
+It can be represented as a linear combination of features, as follows</p>
+
+\[V(s_t, \mathbf{w}) = \mathbf{w}^\top \boldsymbol{\phi}(s_t), \quad \text{where} \quad \boldsymbol{\phi}(s_t) \in \{0, 1\}^n \quad \text{and} \quad \mathbf{w} \in \mathbb{R}^n.\]
+
+<p>For <strong>stochastic gradient descent (SGD)</strong>, the update rule is</p>
+
+\[\mathbf{w}_{t+1} \leftarrow \mathbf{w}_t + \alpha(U_t - V(s_t, \mathbf{w}_t)) \boldsymbol{\phi}(s_t),\]
+
+<p>where \(U_t\) is the target value and \(\alpha\) is the step size.</p>
+
+<p>For <strong>temporal-difference (TD) learning</strong>, the update becomes</p>
+
+\[\mathbf{w}_{t+1} \leftarrow \mathbf{w}_t + \alpha(R_{t+1} + \gamma \mathbf{w}^\top \boldsymbol{\phi}(s_{t+1}) - \mathbf{w}^\top \boldsymbol{\phi}(s_t)) \boldsymbol{\phi}(s_t),\]
+
+<p>where \(R_{t+1}\) is the reward at time \(t+1\), \(\gamma\) is the discount factor, and \(s_{t+1}\) is the next state.</p>
+
+<h2 id="sarsa-with-tile-coding">SARSA with Tile Coding</h2>
+
+<p>Now consider SARSA, with an action-value function \(Q(s, a)\).<br>
+A natural choice of features is \(\boldsymbol{\phi}(s, a)\). 
+Suppose we have discrete actions \(a \in \{1, 2, \ldots, K\}\).<br>
+The action-value function can then be expressed as</p>
+
+\[Q(s, a, \mathbf{w}) = \mathbf{w}_a^\top \boldsymbol{\phi}(s), \quad \text{where} \quad \mathbf{w}_a \in \mathbb{R}^n,\]
+
+<p>and the full weight matrix \(\mathbf{w}\) has shape \(K \times n\).</p>
+
+<p>Since \(\boldsymbol{\phi}(s)\) is a binary vector (and thus sparse), the action-value function can be computed as</p>
+
+\[Q(s, a)=\sum_{i \in \text { active tiles }} \mathbf{w}_{a, i} \quad \text { for all } a=1, \ldots, K.\]
+
+<p>The greedy action is chosen as</p>
+
+\[a^*=\arg \max _{a \in\{1, \ldots, K\}} Q(s, a),\]
+
+<p><strong>Note:</strong> Always break ties randomly to avoid bias.</p>
+
+<h2 id="connections-to-brain-inspired-approaches">Connections to Brain-inspired Approaches.</h2>
+
+<p>There’s actually a well-known connection between tile coding and how the brain may represent space.
+Here’s a link to a <a href="https://en.wikipedia.org/wiki/Cerebellar_model_articulation_controller" rel="external nofollow noopener" target="_blank">wikipedia page</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In summary, tile coding is a simple and efficient way to represent continuous spaces with sparse, binary feature vectors.
+However, this efficiency comes with limitations: the number of tiles increases with the dimensionality of the state space, which makes the method less practical for very high-dimensional problems.</p>
+
+<h2 id="references">References</h2>
+
+<p>[1] R. S. Sutton and A. G. Barto, “Reinforcement Learning: An Introduction,” MIT Press, 2018.</p>
+
 
     </div>
 
