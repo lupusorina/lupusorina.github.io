@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-**June 21th, 2025:** We won the best paper award at the [Space Robotics Workshop](https://roboticsconference.org) at RSS 2025.
+**June 21th, 2025:** We won the **Best Paper Award** at the [Space Robotics Workshop](https://albee.github.io/space-robotics-rss/) at RSS 2025.

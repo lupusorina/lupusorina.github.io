@@ -18,10 +18,10 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 # social: true  # includes social icons at the bottom of the page
 ---
 
-Sorina is a Research Fellow at the Openmind Research Institute in Alberta, Canada.
-She has a PhD from California Institute of Technology (awaiting conferral of the degree) and is an affiliate of the Keck Institute of Space Sciences. She has master degrees from Caltech in Space Engineering and from the Swiss Federal Institute of Technology, Lausanne (EPFL) in Robotics and Autonomous Systems and holds a Bachelors of Science in Electronics Engineering from Polytechnic University of Bucharest, Romania.
-She worked previously at CERN (European Organization for Nuclear Research), and at Soundbrenner, in Hong Kong.
-Her current research focuses on autonomy, control, and machine learning applied to robotics and spacecraft. 
+Sorina is a Research Fellow at the [Openmind Research Institute](https://www.openmindresearch.org) and has joint positions at NASA's [Jet Propulsion Laboratory](https://www.jpl.nasa.gov) and [Caltech](https://www.caltech.edu) as a Visiting Researcher.
+She has a PhD from California Institute of Technology and is an affiliate of the Keck Institute of Space Sciences. She has master degrees from Caltech in Space Engineering and from the Swiss Federal Institute of Technology, Lausanne (EPFL) in Robotics and Autonomous Systems and holds a Bachelors of Science in Electronics Engineering from Polytechnic University of Bucharest, Romania.
+She worked previously at [CERN](https://home.cern) (European Organization for Nuclear Research), and at [Soundbrenner](https://www.soundbrenner.com), in Hong Kong. 
+Her current research focuses on autonomy, control, and machine learning applied to robotics and spacecraft.
 She has won awards and fellowships including the AI4Science Fellowship from Amazon and the Anita Borg Women Techmakers from Google. 
 
 In her spare time, she likes to build robots, travel, and listen to audiobooks (please send me recoms.).
