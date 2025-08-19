@@ -5,7 +5,7 @@ title: publications
 description: 
 years_journal: [2024_j, 2023_j, 2022_j, 2021_j, 2020_j, 2019_j, 2018_j, 2017_j,2015_j, 2013_j]
 years_conference: [2024_c, 2023_c, 2022_c, 2021_c, 2020_c, 2019_c, 2018_c, 2017_c, 2015_c, 2013_c]
-years_workshop: [2019_w]
+years_workshop: [2025_w, 2019_w]
 nav: true
 nav_order: 1
 ---
