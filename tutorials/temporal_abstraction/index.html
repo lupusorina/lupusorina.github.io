@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Announcement_5 | Sorina  Lupu</title>
+    <title>Temporal Abstraction | Sorina  Lupu</title>
     <meta name="author" content="Sorina  Lupu">
     <meta name="description" content="website
 ">
@@ -52,7 +52,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://lupusorina.github.io/news/announcement_5/">
+    <link rel="canonical" href="https://lupusorina.github.io/tutorials/temporal_abstraction/">
     
     <!-- Dark Mode -->
     
@@ -135,25 +135,59 @@
 
     <!-- Content -->
     <div class="container mt-5">
-      <!-- _layouts/post.html -->
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+      <h1 id="temporal-abstraction">Temporal Abstraction</h1>
 
-<div class="post">
+<p><em>Temporal abstraction</em> is the ability to reason or make decisions over extended time intervals by grouping sequences of actions or events into higher-level units (e.g., “open the door” instead of “step forward, turn left, step forward”). It allows planning and learning at multiple time scales.</p>
 
-  <header class="post-header">
-    <h1 class="post-title">Announcement_5</h1>
-    <p class="post-meta">June 20, 2025</p>
-    <p class="post-tags">
-      <a href="/blog/2025"> <i class="fas fa-calendar fa-sm"></i> 2025 </a>
+<h2 id="options">Options</h2>
 
-    </p>
-  </header>
+<p>One solution is to use <em>options</em>, introduced in <a href="#references">[1]</a>, to represent the high-level actions.
+“An option consists of 1. an option policy that directs the agent’s behavior for a subset of the environment states, 2. an initiation set consisting of all the states in which the option can be initiated and 3. a termination condition which specified the conditions under which the option terminates.
+It is important to note that an option is not a sequence of actions; it is a <strong>closed-loop control</strong> rule, meaning that it is responsive to on-going state changes” [2].</p>
 
-  <article class="post-content">
-    <p><strong>June 21th, 2025:</strong> We won the <strong>Best Paper Award</strong> at the <a href="https://albee.github.io/space-robotics-rss/" rel="external nofollow noopener" target="_blank">Space Robotics Workshop</a> at RSS 2025.</p>
+<h3 id="example-torque-limited-inverted-pendulum">Example: Torque-limited Inverted Pendulum</h3>
+<p>One example we can think of is the control of a <em>torque-limited</em> inverted pendulum.
+To swing up this pendulum, we need two tracking controllers: 
+a) a swing-up controller: usually based on energy shaping control</p>
 
-  </article>
-</div>
+\[u = - k \dot{\theta} \tilde{E},\]
+
+<p>where \(k\) is the gain, \(\tilde{E}\) is the energy error, and \(\dot{\theta}\) is the angular velocity,
+and b) a balancing controller: usually based on LQR or nonlinear stabilizing controller, such as</p>
+
+\[u = - K_p \theta - K_d \dot{\theta},\]
+
+<p>where \(K_p\) and \(K_d\) are the proportional and derivative gains, respectively.</p>
+
+<p>Let’s consider swinging up of this system in the <em>options</em> framework:</p>
+
+<p><em>Option 1: “Swing up”</em></p>
+<ul>
+  <li>Initiation set: All downward positions or low-energy states.</li>
+  <li>Policy: Energy-shaping control to increase the total energy toward upright.</li>
+  <li>Termination: When the pendulum is close enough to the upright region.</li>
+</ul>
+
+<p><em>Option 2: “Balance”</em></p>
+<ul>
+  <li>Initiation set: Small region around the upright position.</li>
+  <li>Policy: LQR or nonlinear stabilizing controller.</li>
+  <li>Termination: Never (or when falling out of the upright region).</li>
+</ul>
+
+<h2 id="semi-mdps">Semi-MDPs</h2>
+
+<p>MDPs are not able to represent the temporal abstraction because they are defined over a single time step.
+Instead, semi-MDPs are a generalization of MDPs.</p>
+
+<p>In semi-Markov options, the policy and termination condition are functions of possible histories, such as 
+\(\pi : \Sigma \times \mathcal{A} \to [0, 1],\) and the termination condition is \(\beta : \Sigma \to [0, 1]\).</p>
+
+<h2 id="references">References</h2>
+
+<p>[1] R. S. Sutton, D. Precup, S. Singh, ``Between MDPs and Semi-MDPs: A Framework for Temporal Abstraction in Reinforcement Learning,’’ 1998.</p>
+
+<p>[2] S. Singh, A. Barto, N. Chentanez,``Intrinsically Motivated Reinforcement Learning,’’ 2004.</p>
 
     </div>
 
