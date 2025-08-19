@@ -36,5 +36,7 @@ For tutorials with executable code, click on the "Solutions" link to view the co
 
 4. [**Time Discretization in RL**](/tutorials/time_discretization/)
 
+5. [**Tile Coding**](/tutorials/tile_coding/)
+
 <!-- <h3> C. Advanced Level </h3> -->
 
