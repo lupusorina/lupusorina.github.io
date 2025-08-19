@@ -166,6 +166,13 @@ blockquote {
   text-align: center;
 }
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 .card {
   background-color: var(--global-card-bg-color);
 }
