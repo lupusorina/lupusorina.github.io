@@ -13,7 +13,7 @@ I should start by saying that I don't really like making predictions. I'd rather
 But... I'm writing this post mostly for fun, and because I just finished *Superforecasting*, by Dan Gardner and Philip E. Tetlock, which inspired me to do so.
 
 I'm 33 years old. These are my predictions for the next 25 years.
-The order is random. I will adjust and revisit them every year.
+The order is random. I'll keep track of them every year.
 
 
 
