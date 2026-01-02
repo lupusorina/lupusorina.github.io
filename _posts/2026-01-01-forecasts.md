@@ -30,7 +30,7 @@ This could happen through humans going to the Moon and Mars and finding somethin
 
 ### Different forms of governance
 
-In a connected world, power will shift more toward people and away from rigid, hierarchical systems centered on a single leader governing massive populations. Switzerland already does this relatively well: 7 presidents, frequent voting, real participation. But I think we'll go further. Read for example ''Network State”, by Balaji and you will understand what I mean. 
+In a connected world, power will shift more toward people and away from rigid, hierarchical systems centered on a single leader governing massive populations. Switzerland already does this relatively well: 7 presidents, frequent voting, real participation. But I think we'll go further. Read for example ''Network State”, by Balaji Srinivasan and you will understand what I mean. 
 
 
 ### Hotels on the moon
