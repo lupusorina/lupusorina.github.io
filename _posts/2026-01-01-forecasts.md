@@ -19,7 +19,7 @@ The order is random. I'll keep track of them every year.
 
 ### Faster ways of transportation
 
-Whether through much more efficient airplanes or rocket-based point-to-point travel, we will find ways to move across the planet much faster. Perhaps even modes we are even imagining now. I'm not talking about incremental 10 - 20% improvements. I mean 50 - 80% reductions in travel time. A New York - Zurich trip could take ~2 hours instead of 7 - 8 hours. 
+Whether through much more efficient airplanes or rocket-based point-to-point travel, we will find ways to move across the planet much faster. Perhaps even modes we are even not imagining now. I'm not talking about incremental 10 - 20% improvements. I mean 50 - 80% reductions in travel time. A New York - Zurich trip could take ~2 hours instead of 7 - 8 hours. 
 
 
 ### Finding life on other planet
