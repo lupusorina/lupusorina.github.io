@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Territory Map – Vision-based GVF | Sorina  Lupu</title>
+    <meta name="author" content="Sorina  Lupu">
+    <meta name="description" content="website
+">
+    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+
+    <!-- MathJax Configuration -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          ignoreHtmlClass: 'tex2jax_ignore',
+          processHtmlClass: 'tex2jax_process'
+        }
+      };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://lupusorina.github.io/tutorials/territory_map/">
+    
+    <!-- Dark Mode -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
+    
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Sorina </span>Lupu</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+              <!-- Blog -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/blog/">blog</a>
+              </li>
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/publications/">publications</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/projects/">projects</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/robotics_art/">robotics &amp; art</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/tutorials/">tutorials &amp; lecture notes</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/teaching/">teaching</a>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Scrolling Progress Bar -->
+      <progress id="progress" value="0">
+        <div class="progress-container">
+          <span class="progress-bar"></span>
+        </div>
+      </progress>
+    </header>
+
+
+    <!-- Content -->
+    <div class="container mt-5">
+      <h1>Territory Map – Vision-based GVF</h1>
+
+<p>
+  An interactive demo of <strong>General Value Functions (GVFs)</strong> learned from a 1D vision cone as a robot
+  explores a procedurally generated territory map. The map has four cell types: empty (white), gray, orange, and
+  overlap. Three GVFs are learned online — predicting discounted future encounters of each type along the robot's
+  facing direction.
+</p>
+<p><strong>Controls:</strong> click the map, then use arrow keys to move. Press <kbd>R</kbd> to teleport randomly.
+Adjust γ with the slider or change the seed to get a new map.</p>
+
+<style>
+  #tm-wrap {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  #tm-map-col { flex: 0 0 auto; }
+  #tm-chart-col { flex: 1 1 320px; min-width: 280px; }
+  #tm-mapCanvas {
+    display: block;
+    border: 1px solid #ccc;
+    cursor: crosshair;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    outline: none;
+  }
+  #tm-mapCanvas:focus { box-shadow: 0 0 0 2px #3b82f6; }
+  #tm-barCanvas { display: block; border: 1px solid #ccc; background: #fafafa; }
+  .tm-legend {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+  .tm-swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 3px;
+  }
+  #tm-controls {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    font-size: 13px;
+  }
+  #tm-controls label { font-weight: 500; white-space: nowrap; }
+  #tm-seedInput {
+    width: 56px;
+    font-size: 13px;
+    padding: 2px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .tm-btn {
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+  }
+  .tm-btn:hover { background: #f0f0f0; }
+  #tm-gamma-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 13px;
+  }
+  #tm-gammaSlider { flex: 1; }
+  #tm-gammaVal { font-weight: 700; min-width: 34px; }
+  #tm-chartTitle {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #444;
+  }
+  #tm-status {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.7;
+    padding: 6px 10px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    min-height: 54px;
+  }
+</style>
+
+<div id="tm-wrap">
+  <div id="tm-map-col">
+    <canvas id="tm-mapCanvas" width="360" height="360" tabindex="0"></canvas>
+    <div class="tm-legend">
+      <span><span class="tm-swatch" style="background:#f7f7f7"></span>Empty</span>
+      <span><span class="tm-swatch" style="background:#8a8a8a"></span>Gray</span>
+      <span><span class="tm-swatch" style="background:#e85d04"></span>Orange</span>
+      <span><span class="tm-swatch" style="background:#6b4f2a"></span>Overlap</span>
+    </div>
+    <div id="tm-controls">
+      <label>Map seed:</label>
+      <input type="number" id="tm-seedInput" value="0" min="0" max="9999">
+      <button class="tm-btn" id="tm-regenBtn">Regenerate</button>
+      <button class="tm-btn" id="tm-jumpBtn">Random jump (r)</button>
+    </div>
+    <div id="tm-status">Loading…</div>
+  </div>
+
+  <div id="tm-chart-col">
+    <div id="tm-chartTitle">Vision GVF — Facing ↑ | γ = 0.960</div>
+    <canvas id="tm-barCanvas" width="420" height="300"></canvas>
+    <div id="tm-gamma-row">
+      <label for="tm-gammaSlider">γ (discount):</label>
+      <input type="range" id="tm-gammaSlider" min="0.10" max="0.99" step="0.01" value="0.96">
+      <span id="tm-gammaVal">0.96</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // ── constants ────────────────────────────────────────────────────────────
+  var WHITE=0, GRAY=1, ORANGE=2, OVERLAP=3;
+  var ACTIONS=[[-1,0],[1,0],[0,-1],[0,1]];
+  var DIR_NAMES=["↑","↓","←","→"];
+  var MAP_SIZE=120, VISION_RANGE=12, ALPHA=0.1;
+
+  // ── seeded PRNG ──────────────────────────────────────────────────────────
+  function makeRNG(seed) {
+    var s = ((seed * 1664525 + 1013904223) >>> 0) || 1;
+    return {
+      next: function() { s^=s<<13; s^=s>>>17; s^=s<<5; return s>>>0; },
+      random: function() { return this.next()/0x100000000; },
+      integers: function(lo,hi){ return lo+(this.next()%(hi-lo))|0; },
+      uniform: function(lo,hi){ return lo+this.random()*(hi-lo); }
+    };
+  }
+
+  // ── map building ─────────────────────────────────────────────────────────
+  function gaussianField(size, centers, sigScale, weights) {
+    var sig=size*sigScale, sig2=2*sig*sig;
+    var f=new Float64Array(size*size);
+    for(var ci=0;ci<centers.length;ci++){
+      var py=centers[ci][0]*(size-1), px=centers[ci][1]*(size-1), wt=weights[ci];
+      for(var y=0;y<size;y++){
+        var dy2=(y-py)*(y-py);
+        for(var x=0;x<size;x++){
+          f[y*size+x]+=wt*Math.exp(-((x-px)*(x-px)+dy2)/sig2);
+        }
+      }
+    }
+    return f;
+  }
+
+  function buildMap(size, seed) {
+    var rng=makeRNG(seed);
+    var ng=rng.integers(8,14), no=rng.integers(8,14);
+    var gc=[],oc=[],gw=[],ow=[];
+    for(var i=0;i<ng;i++){ gc.push([rng.random(),rng.random()]); gw.push(rng.uniform(0.6,1.4)); }
+    for(var i=0;i<no;i++){ oc.push([rng.random(),rng.random()]); ow.push(rng.uniform(0.6,1.4)); }
+    var gf=gaussianField(size,gc,0.09,gw);
+    var of_=gaussianField(size,oc,0.085,ow);
+    var gmax=0,omax=0;
+    for(var i=0;i<size*size;i++){if(gf[i]>gmax)gmax=gf[i];if(of_[i]>omax)omax=of_[i];}
+    gmax+=1e-9; omax+=1e-9;
+    var labels=new Uint8Array(size*size);
+    for(var i=0;i<size*size;i++){
+      var sg=gf[i]/gmax>=0.35, so=of_[i]/omax>=0.35;
+      labels[i]=(sg&&so)?OVERLAP:sg?GRAY:so?ORANGE:WHITE;
+    }
+    return labels;
+  }
+
+  // ── state ────────────────────────────────────────────────────────────────
+  var mapSeed=0, labels=buildMap(MAP_SIZE,mapSeed);
+  var walkRNG=makeRNG(100);
+  var robotY=0, robotX=0, facing=0, gamma=0.96;
+  var vGray, vOrange, vOverlap;
+
+  function resetGVFs(){
+    vGray   =Array.from({length:4},function(){return new Float64Array(VISION_RANGE);});
+    vOrange =Array.from({length:4},function(){return new Float64Array(VISION_RANGE);});
+    vOverlap=Array.from({length:4},function(){return new Float64Array(VISION_RANGE);});
+  }
+  resetGVFs();
+
+  function randomStart(){
+    robotY=walkRNG.integers(0,MAP_SIZE);
+    robotX=walkRNG.integers(0,MAP_SIZE);
+    facing=walkRNG.integers(0,4);
+  }
+  randomStart();
+
+  // ── GVF helpers ──────────────────────────────────────────────────────────
+  function cumulants(label){
+    return [(label===GRAY||label===OVERLAP)?1:0,
+            (label===ORANGE||label===OVERLAP)?1:0,
+            label===OVERLAP?1:0];
+  }
+
+  function visionRay(y,x,dir){
+    var dy=ACTIONS[dir][0], dx=ACTIONS[dir][1];
+    var ray=new Int32Array(VISION_RANGE);
+    for(var i=1;i<=VISION_RANGE;i++){
+      var ny=Math.max(0,Math.min(MAP_SIZE-1,y+i*dy));
+      var nx=Math.max(0,Math.min(MAP_SIZE-1,x+i*dx));
+      ray[i-1]=labels[ny*MAP_SIZE+nx];
+    }
+    return ray;
+  }
+
+  function tryStep(dy,dx){
+    var oldF=facing, sy=robotY, sx=robotX;
+    for(var d=0;d<4;d++){if(ACTIONS[d][0]===dy&&ACTIONS[d][1]===dx){facing=d;break;}}
+    var ray=visionRay(sy,sx,oldF);
+    for(var off=0;off<VISION_RANGE;off++){
+      var c=cumulants(ray[off]), nxt=off+1;
+      var tg =nxt<VISION_RANGE?vGray[oldF][nxt]:0;
+      var to =nxt<VISION_RANGE?vOrange[oldF][nxt]:0;
+      var tov=nxt<VISION_RANGE?vOverlap[oldF][nxt]:0;
+      vGray[oldF][off]   +=ALPHA*(c[0]+gamma*tg -vGray[oldF][off]);
+      vOrange[oldF][off] +=ALPHA*(c[1]+gamma*to -vOrange[oldF][off]);
+      vOverlap[oldF][off]+=ALPHA*(c[2]+gamma*tov-vOverlap[oldF][off]);
+    }
+    robotY=Math.max(0,Math.min(MAP_SIZE-1,sy+dy));
+    robotX=Math.max(0,Math.min(MAP_SIZE-1,sx+dx));
+    redraw();
+  }
+
+  // ── rendering ────────────────────────────────────────────────────────────
+  var mapCanvas=document.getElementById('tm-mapCanvas');
+  var mCtx=mapCanvas.getContext('2d');
+  var barCanvas=document.getElementById('tm-barCanvas');
+  var bCtx=barCanvas.getContext('2d');
+  var mapImage=null;
+
+  function buildMapImage(){
+    var img=mCtx.createImageData(MAP_SIZE,MAP_SIZE);
+    var pal=[[247,247,247],[138,138,138],[232,93,4],[107,79,42]];
+    for(var i=0;i<MAP_SIZE*MAP_SIZE;i++){
+      var c=pal[labels[i]];
+      img.data[i*4]=c[0]; img.data[i*4+1]=c[1];
+      img.data[i*4+2]=c[2]; img.data[i*4+3]=255;
+    }
+    mapImage=img;
+  }
+
+  function drawMap(){
+    var cw=mapCanvas.width, ch=mapCanvas.height;
+    var cellW=cw/MAP_SIZE, cellH=ch/MAP_SIZE;
+    // scale pixel map to canvas
+    var off=document.createElement('canvas');
+    off.width=MAP_SIZE; off.height=MAP_SIZE;
+    off.getContext('2d').putImageData(mapImage,0,0);
+    mCtx.imageSmoothingEnabled=false;
+    mCtx.drawImage(off,0,0,cw,ch);
+    // vision ray
+    var dy=ACTIONS[facing][0], dx=ACTIONS[facing][1];
+    var rx=(robotX+0.5)*cellW, ry=(robotY+0.5)*cellH;
+    mCtx.strokeStyle='rgba(210,30,30,0.78)';
+    mCtx.lineWidth=2.5;
+    mCtx.beginPath();
+    mCtx.moveTo(rx,ry);
+    mCtx.lineTo((robotX+dx*VISION_RANGE*0.95+0.5)*cellW,(robotY+dy*VISION_RANGE*0.95+0.5)*cellH);
+    mCtx.stroke();
+    // robot dot
+    var r=Math.max(4,cellW*4.5);
+    mCtx.beginPath();
+    mCtx.arc(rx,ry,r,0,2*Math.PI);
+    mCtx.fillStyle='#3b82f6';
+    mCtx.fill();
+    mCtx.strokeStyle='#1e3a8a';
+    mCtx.lineWidth=1.5;
+    mCtx.stroke();
+  }
+
+  function drawBars(){
+    var cw=barCanvas.width, ch=barCanvas.height;
+    bCtx.clearRect(0,0,cw,ch);
+    var pL=46,pR=14,pT=16,pB=46;
+    var pw=cw-pL-pR, ph=ch-pT-pB, maxV=15;
+    bCtx.fillStyle='#fafafa'; bCtx.fillRect(0,0,cw,ch);
+    // gridlines + y labels
+    bCtx.strokeStyle='#e5e5e5'; bCtx.lineWidth=1;
+    bCtx.font='10px sans-serif'; bCtx.textAlign='right'; bCtx.fillStyle='#999';
+    for(var v=0;v<=maxV;v+=3){
+      var gy=pT+ph-(v/maxV)*ph;
+      bCtx.beginPath(); bCtx.moveTo(pL,gy); bCtx.lineTo(pL+pw,gy); bCtx.stroke();
+      bCtx.fillText(v,pL-4,gy+3.5);
+    }
+    // axes
+    bCtx.strokeStyle='#bbb'; bCtx.lineWidth=1;
+    bCtx.beginPath(); bCtx.moveTo(pL,pT); bCtx.lineTo(pL,pT+ph); bCtx.lineTo(pL+pw,pT+ph); bCtx.stroke();
+    // bars
+    var gW=pw/VISION_RANGE, bw=gW*0.22, gap=gW*0.015;
+    for(var i=0;i<VISION_RANGE;i++){
+      var bx=pL+i*gW+gW*0.09, by=pT+ph;
+      var draw=function(arr,col,shift){
+        var h=Math.max(0,(arr[facing][i]/maxV)*ph);
+        bCtx.fillStyle=col; bCtx.fillRect(bx+shift,by-h,bw,h);
+      };
+      draw(vGray,'#8a8a8a',0);
+      draw(vOrange,'#e85d04',bw+gap);
+      draw(vOverlap,'#6b4f2a',2*(bw+gap));
+      bCtx.fillStyle='#666'; bCtx.font='10px sans-serif'; bCtx.textAlign='center';
+      bCtx.fillText(i+1,bx+bw*1.5+gap,by+13);
+    }
+    // axis labels
+    bCtx.fillStyle='#555'; bCtx.font='11px sans-serif'; bCtx.textAlign='center';
+    bCtx.fillText('Offset (1 = closest cell ahead)',pL+pw/2,ch-4);
+    bCtx.save(); bCtx.translate(11,pT+ph/2); bCtx.rotate(-Math.PI/2);
+    bCtx.fillText('Predicted Discounted V(s)',0,0); bCtx.restore();
+    // legend
+    var legItems=[['#8a8a8a','Gray'],['#e85d04','Orange'],['#6b4f2a','Overlap']];
+    var lx=pL;
+    for(var li=0;li<legItems.length;li++){
+      bCtx.fillStyle=legItems[li][0]; bCtx.fillRect(lx,ch-pB+22,10,10);
+      bCtx.fillStyle='#555'; bCtx.font='11px sans-serif'; bCtx.textAlign='left';
+      bCtx.fillText(legItems[li][1],lx+13,ch-pB+31); lx+=70;
+    }
+  }
+
+  var CELL_NAMES={0:'WHITE',1:'GRAY',2:'ORANGE',3:'OVERLAP'};
+  function redraw(){
+    drawMap(); drawBars();
+    document.getElementById('tm-chartTitle').textContent=
+      'Vision GVF — Facing '+DIR_NAMES[facing]+'  |  γ = '+gamma.toFixed(3);
+    var cell=CELL_NAMES[labels[robotY*MAP_SIZE+robotX]];
+    document.getElementById('tm-status').innerHTML=
+      'Robot at ('+robotY+', '+robotX+') &bull; <strong>'+cell+'</strong><br>'+
+      'Facing: '+DIR_NAMES[facing]+'&nbsp;&nbsp; Vision: '+VISION_RANGE+' cells<br>'+
+      '↑↓←→ Move &nbsp;|&nbsp; R = Random jump';
+  }
+
+  function init(seed){
+    mapSeed=seed; labels=buildMap(MAP_SIZE,seed);
+    walkRNG=makeRNG(seed+100); resetGVFs();
+    buildMapImage(); randomStart(); redraw();
+  }
+  init(0);
+
+  // ── keyboard ─────────────────────────────────────────────────────────────
+  var KEY_MAP={ArrowUp:[-1,0],ArrowDown:[1,0],ArrowLeft:[0,-1],ArrowRight:[0,1]};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='r'||e.key==='R'){randomStart();redraw();return;}
+    var d=KEY_MAP[e.key];
+    if(d){tryStep(d[0],d[1]);e.preventDefault();}
+  });
+  mapCanvas.addEventListener('click',function(){mapCanvas.focus();});
+
+  // ── controls ─────────────────────────────────────────────────────────────
+  document.getElementById('tm-gammaSlider').addEventListener('input',function(){
+    gamma=parseFloat(this.value);
+    document.getElementById('tm-gammaVal').textContent=gamma.toFixed(2);
+    document.getElementById('tm-chartTitle').textContent=
+      'Vision GVF — Facing '+DIR_NAMES[facing]+'  |  γ = '+gamma.toFixed(3);
+    drawBars();
+  });
+  document.getElementById('tm-regenBtn').addEventListener('click',function(){
+    init(parseInt(document.getElementById('tm-seedInput').value,10)||0);
+  });
+  document.getElementById('tm-jumpBtn').addEventListener('click',function(){
+    randomStart(); redraw();
+  });
+  document.getElementById('tm-seedInput').addEventListener('keydown',function(e){
+    if(e.key==='Enter') document.getElementById('tm-regenBtn').click();
+  });
+})();
+</script>
+
+    </div>
+
+    <!-- Footer -->    
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        © Copyright 2026 Sorina  Lupu. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+Last updated: April 10, 2026.
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js"></script><!-- Load Common JS -->
+  <script defer src="/assets/js/common.js"></script>
+  <script defer src="/assets/js/copy_code.js" type="text/javascript"></script>
+
+    
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    
+    
+
+<!-- Scrolling Progress Bar -->
+<script type="text/javascript">
+  /*
+   * This JavaScript code has been adapted from the article 
+   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
+   * published on the website https://css-tricks.com on the 7th of May, 2014.
+   * Couple of changes were made to the original code to make it compatible 
+   * with the `al-foio` theme.
+   */
+  const progressBar = $("#progress");
+  /*
+   * We set up the bar after all elements are done loading.
+   * In some cases, if the images in the page are larger than the intended
+   * size they'll have on the page, they'll be resized via CSS to accomodate
+   * the desired size. This mistake, however, breaks the computations as the
+   * scroll size is computed as soon as the elements finish loading.
+   * To account for this, a minimal delay was introduced before computing the
+   * values.
+   */
+  window.onload = function () {
+    setTimeout(progressBarSetup, 50);
+  };
+  /*
+   * We set up the bar according to the browser.
+   * If the browser supports the progress element we use that.
+   * Otherwise, we resize the bar thru CSS styling
+   */
+  function progressBarSetup() {
+    if ("max" in document.createElement("progress")) {
+      initializeProgressElement();
+      $(document).on("scroll", function() {
+        progressBar.attr({ value: getCurrentScrollPosition() });
+      });
+      $(window).on("resize", initializeProgressElement);
+    } else {
+      resizeProgressBar();
+      $(document).on("scroll", resizeProgressBar);
+      $(window).on("resize", resizeProgressBar);
+    }
+  }
+  /*
+   * The vertical scroll position is the same as the number of pixels that
+   * are hidden from view above the scrollable area. Thus, a value > 0 is
+   * how much the user has scrolled from the top
+   */
+  function getCurrentScrollPosition() {
+    return $(window).scrollTop();
+  }
+
+  function initializeProgressElement() {
+    let navbarHeight = $("#navbar").outerHeight(true);
+    $("body").css({ "padding-top": navbarHeight });
+    $("progress-container").css({ "padding-top": navbarHeight });
+    progressBar.css({ top: navbarHeight });
+    progressBar.attr({
+      max: getDistanceToScroll(),
+      value: getCurrentScrollPosition(),
+    });
+  }
+  /*
+   * The offset between the html document height and the browser viewport
+   * height will be greater than zero if vertical scroll is possible.
+   * This is the distance the user can scroll
+   */
+  function getDistanceToScroll() {
+    return $(document).height() - $(window).height();
+  }
+
+  function resizeProgressBar() {
+    progressBar.css({ width: getWidthPercentage() + "%" });
+  }
+  // The scroll ratio equals the percentage to resize the bar
+  function getWidthPercentage() {
+    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
+  }
+</script>
+
+  </body>
+</html>
