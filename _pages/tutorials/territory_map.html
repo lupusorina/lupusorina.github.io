@@ -1,0 +1,384 @@
+---
+layout: default
+title: "Territory Map – Vision-based GVF"
+permalink: /tutorials/territory_map/
+---
+
+<h1>Territory Map – Vision-based GVF</h1>
+
+<p>
+  An interactive demo of <strong>General Value Functions (GVFs)</strong> learned from a 1D vision cone as a robot
+  explores a procedurally generated territory map. The map has four cell types: empty (white), gray, orange, and
+  overlap. Three GVFs are learned online — predicting discounted future encounters of each type along the robot's
+  facing direction.
+</p>
+<p><strong>Controls:</strong> click the map, then use arrow keys to move. Press <kbd>R</kbd> to teleport randomly.
+Adjust γ with the slider or change the seed to get a new map.</p>
+
+<style>
+  #tm-wrap {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  #tm-map-col { flex: 0 0 auto; }
+  #tm-chart-col { flex: 1 1 320px; min-width: 280px; }
+  #tm-mapCanvas {
+    display: block;
+    border: 1px solid #ccc;
+    cursor: crosshair;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    outline: none;
+  }
+  #tm-mapCanvas:focus { box-shadow: 0 0 0 2px #3b82f6; }
+  #tm-barCanvas { display: block; border: 1px solid #ccc; background: #fafafa; }
+  .tm-legend {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+  .tm-swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 3px;
+  }
+  #tm-controls {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    font-size: 13px;
+  }
+  #tm-controls label { font-weight: 500; white-space: nowrap; }
+  #tm-seedInput {
+    width: 56px;
+    font-size: 13px;
+    padding: 2px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .tm-btn {
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+  }
+  .tm-btn:hover { background: #f0f0f0; }
+  #tm-gamma-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 13px;
+  }
+  #tm-gammaSlider { flex: 1; }
+  #tm-gammaVal { font-weight: 700; min-width: 34px; }
+  #tm-chartTitle {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #444;
+  }
+  #tm-status {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.7;
+    padding: 6px 10px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    min-height: 54px;
+  }
+</style>
+
+<div id="tm-wrap">
+  <div id="tm-map-col">
+    <canvas id="tm-mapCanvas" width="360" height="360" tabindex="0"></canvas>
+    <div class="tm-legend">
+      <span><span class="tm-swatch" style="background:#f7f7f7"></span>Empty</span>
+      <span><span class="tm-swatch" style="background:#8a8a8a"></span>Gray</span>
+      <span><span class="tm-swatch" style="background:#e85d04"></span>Orange</span>
+      <span><span class="tm-swatch" style="background:#6b4f2a"></span>Overlap</span>
+    </div>
+    <div id="tm-controls">
+      <label>Map seed:</label>
+      <input type="number" id="tm-seedInput" value="0" min="0" max="9999">
+      <button class="tm-btn" id="tm-regenBtn">Regenerate</button>
+      <button class="tm-btn" id="tm-jumpBtn">Random jump (r)</button>
+    </div>
+    <div id="tm-status">Loading…</div>
+  </div>
+
+  <div id="tm-chart-col">
+    <div id="tm-chartTitle">Vision GVF — Facing ↑ | γ = 0.960</div>
+    <canvas id="tm-barCanvas" width="420" height="300"></canvas>
+    <div id="tm-gamma-row">
+      <label for="tm-gammaSlider">γ (discount):</label>
+      <input type="range" id="tm-gammaSlider" min="0.10" max="0.99" step="0.01" value="0.96">
+      <span id="tm-gammaVal">0.96</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // ── constants ────────────────────────────────────────────────────────────
+  var WHITE=0, GRAY=1, ORANGE=2, OVERLAP=3;
+  var ACTIONS=[[-1,0],[1,0],[0,-1],[0,1]];
+  var DIR_NAMES=["↑","↓","←","→"];
+  var MAP_SIZE=120, VISION_RANGE=12, ALPHA=0.1;
+
+  // ── seeded PRNG ──────────────────────────────────────────────────────────
+  function makeRNG(seed) {
+    var s = ((seed * 1664525 + 1013904223) >>> 0) || 1;
+    return {
+      next: function() { s^=s<<13; s^=s>>>17; s^=s<<5; return s>>>0; },
+      random: function() { return this.next()/0x100000000; },
+      integers: function(lo,hi){ return lo+(this.next()%(hi-lo))|0; },
+      uniform: function(lo,hi){ return lo+this.random()*(hi-lo); }
+    };
+  }
+
+  // ── map building ─────────────────────────────────────────────────────────
+  function gaussianField(size, centers, sigScale, weights) {
+    var sig=size*sigScale, sig2=2*sig*sig;
+    var f=new Float64Array(size*size);
+    for(var ci=0;ci<centers.length;ci++){
+      var py=centers[ci][0]*(size-1), px=centers[ci][1]*(size-1), wt=weights[ci];
+      for(var y=0;y<size;y++){
+        var dy2=(y-py)*(y-py);
+        for(var x=0;x<size;x++){
+          f[y*size+x]+=wt*Math.exp(-((x-px)*(x-px)+dy2)/sig2);
+        }
+      }
+    }
+    return f;
+  }
+
+  function buildMap(size, seed) {
+    var rng=makeRNG(seed);
+    var ng=rng.integers(8,14), no=rng.integers(8,14);
+    var gc=[],oc=[],gw=[],ow=[];
+    for(var i=0;i<ng;i++){ gc.push([rng.random(),rng.random()]); gw.push(rng.uniform(0.6,1.4)); }
+    for(var i=0;i<no;i++){ oc.push([rng.random(),rng.random()]); ow.push(rng.uniform(0.6,1.4)); }
+    var gf=gaussianField(size,gc,0.09,gw);
+    var of_=gaussianField(size,oc,0.085,ow);
+    var gmax=0,omax=0;
+    for(var i=0;i<size*size;i++){if(gf[i]>gmax)gmax=gf[i];if(of_[i]>omax)omax=of_[i];}
+    gmax+=1e-9; omax+=1e-9;
+    var labels=new Uint8Array(size*size);
+    for(var i=0;i<size*size;i++){
+      var sg=gf[i]/gmax>=0.35, so=of_[i]/omax>=0.35;
+      labels[i]=(sg&&so)?OVERLAP:sg?GRAY:so?ORANGE:WHITE;
+    }
+    return labels;
+  }
+
+  // ── state ────────────────────────────────────────────────────────────────
+  var mapSeed=0, labels=buildMap(MAP_SIZE,mapSeed);
+  var walkRNG=makeRNG(100);
+  var robotY=0, robotX=0, facing=0, gamma=0.96;
+  var vGray, vOrange, vOverlap;
+
+  function resetGVFs(){
+    vGray   =Array.from({length:4},function(){return new Float64Array(VISION_RANGE);});
+    vOrange =Array.from({length:4},function(){return new Float64Array(VISION_RANGE);});
+    vOverlap=Array.from({length:4},function(){return new Float64Array(VISION_RANGE);});
+  }
+  resetGVFs();
+
+  function randomStart(){
+    robotY=walkRNG.integers(0,MAP_SIZE);
+    robotX=walkRNG.integers(0,MAP_SIZE);
+    facing=walkRNG.integers(0,4);
+  }
+  randomStart();
+
+  // ── GVF helpers ──────────────────────────────────────────────────────────
+  function cumulants(label){
+    return [(label===GRAY||label===OVERLAP)?1:0,
+            (label===ORANGE||label===OVERLAP)?1:0,
+            label===OVERLAP?1:0];
+  }
+
+  function visionRay(y,x,dir){
+    var dy=ACTIONS[dir][0], dx=ACTIONS[dir][1];
+    var ray=new Int32Array(VISION_RANGE);
+    for(var i=1;i<=VISION_RANGE;i++){
+      var ny=Math.max(0,Math.min(MAP_SIZE-1,y+i*dy));
+      var nx=Math.max(0,Math.min(MAP_SIZE-1,x+i*dx));
+      ray[i-1]=labels[ny*MAP_SIZE+nx];
+    }
+    return ray;
+  }
+
+  function tryStep(dy,dx){
+    var oldF=facing, sy=robotY, sx=robotX;
+    for(var d=0;d<4;d++){if(ACTIONS[d][0]===dy&&ACTIONS[d][1]===dx){facing=d;break;}}
+    var ray=visionRay(sy,sx,oldF);
+    for(var off=0;off<VISION_RANGE;off++){
+      var c=cumulants(ray[off]), nxt=off+1;
+      var tg =nxt<VISION_RANGE?vGray[oldF][nxt]:0;
+      var to =nxt<VISION_RANGE?vOrange[oldF][nxt]:0;
+      var tov=nxt<VISION_RANGE?vOverlap[oldF][nxt]:0;
+      vGray[oldF][off]   +=ALPHA*(c[0]+gamma*tg -vGray[oldF][off]);
+      vOrange[oldF][off] +=ALPHA*(c[1]+gamma*to -vOrange[oldF][off]);
+      vOverlap[oldF][off]+=ALPHA*(c[2]+gamma*tov-vOverlap[oldF][off]);
+    }
+    robotY=Math.max(0,Math.min(MAP_SIZE-1,sy+dy));
+    robotX=Math.max(0,Math.min(MAP_SIZE-1,sx+dx));
+    redraw();
+  }
+
+  // ── rendering ────────────────────────────────────────────────────────────
+  var mapCanvas=document.getElementById('tm-mapCanvas');
+  var mCtx=mapCanvas.getContext('2d');
+  var barCanvas=document.getElementById('tm-barCanvas');
+  var bCtx=barCanvas.getContext('2d');
+  var mapImage=null;
+
+  function buildMapImage(){
+    var img=mCtx.createImageData(MAP_SIZE,MAP_SIZE);
+    var pal=[[247,247,247],[138,138,138],[232,93,4],[107,79,42]];
+    for(var i=0;i<MAP_SIZE*MAP_SIZE;i++){
+      var c=pal[labels[i]];
+      img.data[i*4]=c[0]; img.data[i*4+1]=c[1];
+      img.data[i*4+2]=c[2]; img.data[i*4+3]=255;
+    }
+    mapImage=img;
+  }
+
+  function drawMap(){
+    var cw=mapCanvas.width, ch=mapCanvas.height;
+    var cellW=cw/MAP_SIZE, cellH=ch/MAP_SIZE;
+    // scale pixel map to canvas
+    var off=document.createElement('canvas');
+    off.width=MAP_SIZE; off.height=MAP_SIZE;
+    off.getContext('2d').putImageData(mapImage,0,0);
+    mCtx.imageSmoothingEnabled=false;
+    mCtx.drawImage(off,0,0,cw,ch);
+    // vision ray
+    var dy=ACTIONS[facing][0], dx=ACTIONS[facing][1];
+    var rx=(robotX+0.5)*cellW, ry=(robotY+0.5)*cellH;
+    mCtx.strokeStyle='rgba(210,30,30,0.78)';
+    mCtx.lineWidth=2.5;
+    mCtx.beginPath();
+    mCtx.moveTo(rx,ry);
+    mCtx.lineTo((robotX+dx*VISION_RANGE*0.95+0.5)*cellW,(robotY+dy*VISION_RANGE*0.95+0.5)*cellH);
+    mCtx.stroke();
+    // robot dot
+    var r=Math.max(4,cellW*4.5);
+    mCtx.beginPath();
+    mCtx.arc(rx,ry,r,0,2*Math.PI);
+    mCtx.fillStyle='#3b82f6';
+    mCtx.fill();
+    mCtx.strokeStyle='#1e3a8a';
+    mCtx.lineWidth=1.5;
+    mCtx.stroke();
+  }
+
+  function drawBars(){
+    var cw=barCanvas.width, ch=barCanvas.height;
+    bCtx.clearRect(0,0,cw,ch);
+    var pL=46,pR=14,pT=16,pB=46;
+    var pw=cw-pL-pR, ph=ch-pT-pB, maxV=15;
+    bCtx.fillStyle='#fafafa'; bCtx.fillRect(0,0,cw,ch);
+    // gridlines + y labels
+    bCtx.strokeStyle='#e5e5e5'; bCtx.lineWidth=1;
+    bCtx.font='10px sans-serif'; bCtx.textAlign='right'; bCtx.fillStyle='#999';
+    for(var v=0;v<=maxV;v+=3){
+      var gy=pT+ph-(v/maxV)*ph;
+      bCtx.beginPath(); bCtx.moveTo(pL,gy); bCtx.lineTo(pL+pw,gy); bCtx.stroke();
+      bCtx.fillText(v,pL-4,gy+3.5);
+    }
+    // axes
+    bCtx.strokeStyle='#bbb'; bCtx.lineWidth=1;
+    bCtx.beginPath(); bCtx.moveTo(pL,pT); bCtx.lineTo(pL,pT+ph); bCtx.lineTo(pL+pw,pT+ph); bCtx.stroke();
+    // bars
+    var gW=pw/VISION_RANGE, bw=gW*0.22, gap=gW*0.015;
+    for(var i=0;i<VISION_RANGE;i++){
+      var bx=pL+i*gW+gW*0.09, by=pT+ph;
+      var draw=function(arr,col,shift){
+        var h=Math.max(0,(arr[facing][i]/maxV)*ph);
+        bCtx.fillStyle=col; bCtx.fillRect(bx+shift,by-h,bw,h);
+      };
+      draw(vGray,'#8a8a8a',0);
+      draw(vOrange,'#e85d04',bw+gap);
+      draw(vOverlap,'#6b4f2a',2*(bw+gap));
+      bCtx.fillStyle='#666'; bCtx.font='10px sans-serif'; bCtx.textAlign='center';
+      bCtx.fillText(i+1,bx+bw*1.5+gap,by+13);
+    }
+    // axis labels
+    bCtx.fillStyle='#555'; bCtx.font='11px sans-serif'; bCtx.textAlign='center';
+    bCtx.fillText('Offset (1 = closest cell ahead)',pL+pw/2,ch-4);
+    bCtx.save(); bCtx.translate(11,pT+ph/2); bCtx.rotate(-Math.PI/2);
+    bCtx.fillText('Predicted Discounted V(s)',0,0); bCtx.restore();
+    // legend
+    var legItems=[['#8a8a8a','Gray'],['#e85d04','Orange'],['#6b4f2a','Overlap']];
+    var lx=pL;
+    for(var li=0;li<legItems.length;li++){
+      bCtx.fillStyle=legItems[li][0]; bCtx.fillRect(lx,ch-pB+22,10,10);
+      bCtx.fillStyle='#555'; bCtx.font='11px sans-serif'; bCtx.textAlign='left';
+      bCtx.fillText(legItems[li][1],lx+13,ch-pB+31); lx+=70;
+    }
+  }
+
+  var CELL_NAMES={0:'WHITE',1:'GRAY',2:'ORANGE',3:'OVERLAP'};
+  function redraw(){
+    drawMap(); drawBars();
+    document.getElementById('tm-chartTitle').textContent=
+      'Vision GVF — Facing '+DIR_NAMES[facing]+'  |  γ = '+gamma.toFixed(3);
+    var cell=CELL_NAMES[labels[robotY*MAP_SIZE+robotX]];
+    document.getElementById('tm-status').innerHTML=
+      'Robot at ('+robotY+', '+robotX+') &bull; <strong>'+cell+'</strong><br>'+
+      'Facing: '+DIR_NAMES[facing]+'&nbsp;&nbsp; Vision: '+VISION_RANGE+' cells<br>'+
+      '↑↓←→ Move &nbsp;|&nbsp; R = Random jump';
+  }
+
+  function init(seed){
+    mapSeed=seed; labels=buildMap(MAP_SIZE,seed);
+    walkRNG=makeRNG(seed+100); resetGVFs();
+    buildMapImage(); randomStart(); redraw();
+  }
+  init(0);
+
+  // ── keyboard ─────────────────────────────────────────────────────────────
+  var KEY_MAP={ArrowUp:[-1,0],ArrowDown:[1,0],ArrowLeft:[0,-1],ArrowRight:[0,1]};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='r'||e.key==='R'){randomStart();redraw();return;}
+    var d=KEY_MAP[e.key];
+    if(d){tryStep(d[0],d[1]);e.preventDefault();}
+  });
+  mapCanvas.addEventListener('click',function(){mapCanvas.focus();});
+
+  // ── controls ─────────────────────────────────────────────────────────────
+  document.getElementById('tm-gammaSlider').addEventListener('input',function(){
+    gamma=parseFloat(this.value);
+    document.getElementById('tm-gammaVal').textContent=gamma.toFixed(2);
+    document.getElementById('tm-chartTitle').textContent=
+      'Vision GVF — Facing '+DIR_NAMES[facing]+'  |  γ = '+gamma.toFixed(3);
+    drawBars();
+  });
+  document.getElementById('tm-regenBtn').addEventListener('click',function(){
+    init(parseInt(document.getElementById('tm-seedInput').value,10)||0);
+  });
+  document.getElementById('tm-jumpBtn').addEventListener('click',function(){
+    randomStart(); redraw();
+  });
+  document.getElementById('tm-seedInput').addEventListener('keydown',function(e){
+    if(e.key==='Enter') document.getElementById('tm-regenBtn').click();
+  });
+})();
+</script>
