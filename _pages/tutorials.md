@@ -19,6 +19,7 @@ For tutorials with executable code, click on the "Solutions" link to view the co
 
 <h3> B. Intermediate Level </h3> -->
 
+## Control.
 
 1. **Tracking controller for a car with Ackermann steering**
 
@@ -37,5 +38,11 @@ For tutorials with executable code, click on the "Solutions" link to view the co
 4. [**Time Discretization in RL**](/tutorials/time_discretization/)
 
 5. [**Tile Coding**](/tutorials/tile_coding/)
+
+6. [**SGD animation**](/tutorials/sgd_animation/)
+
+7. [**Territory Map – Vision-based GVF**](/tutorials/territory_map/)
+
+
 
 
